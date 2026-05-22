@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
+
+<!-- Title & Description -->
+<title>Yaadein | Guest Photo Sharing for Indian Weddings</title>
+<meta name="description" content="Yaadein collects every candid, every dance, every tear from every wedding guest into one live shared album. No app. No login. One QR code. Built for Indian weddings.">
+<meta name="keywords" content="wedding guest photo sharing, Indian wedding app, shaadi photo album, QR code wedding photos, wedding memories India, guest upload photos wedding">
+<meta name="author" content="Yaadein">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://yaadein.app/">
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn previews) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yaadein.app/">
+<meta property="og:title" content="Yaadein | Guest Photo Sharing for Indian Weddings">
+<meta property="og:description" content="Collect every candid from every guest. One QR code. No app. No login. Built for Indian weddings.">
+<meta property="og:image" content="https://yaadein.app/images/hero-bg.jpg">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="Yaadein">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yaadein | Guest Photo Sharing for Indian Weddings">
+<meta name="twitter:description" content="Collect every candid from every guest. One QR code. No app. No login.">
+<meta name="twitter:image" content="https://yaadein.app/images/hero-bg.jpg">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Yaadein",
+  "url": "https://yaadein.app",
+  "description": "Wedding guest photo sharing app for Indian weddings. Guests scan a QR code and upload photos instantly into one live shared album. No app download. No login required.",
+  "applicationCategory": "PhotographyApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "en-IN",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Wedding couples, photographers, event organisers in India"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "INR",
+    "price": "2999",
+    "description": "Per wedding event"
+  },
+  "featureList": [
+    "QR code guest upload",
+    "Live shared gallery",
+    "No app required",
+    "Organized by Haldi Sangeet Baraat Reception",
+    "Full quality photo download"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#080403;--bg2:#130c07;--bg3:#1e1209;
+  --gold:#c8954a;--glt:#e5bc80;--gdk:#7a5825;
+  --red:#8b1a1a;--cream:#f0e6d3;--c2:#b5a898;
+  --bdr:rgba(200,149,74,0.18);--nav:68px;
+}
+
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif}
+
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:300;
+  display:flex;align-items:center;justify-content:space-between;padding:0 48px;
+  background:rgba(8,4,3,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--bdr);
+}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.tabs{display:flex;gap:3px;background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:100px;padding:4px}
+.tab{padding:8px 22px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c2);background:none;border:none;border-radius:100px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.tab:hover{color:var(--cream)}
+.tab.on{background:var(--gold);color:#080403;font-weight:500}
+
+/* SCREENS */
+.screen{position:fixed;top:var(--nav);left:0;right:0;bottom:0;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.screen.on{opacity:1;pointer-events:auto}
+.screen::-webkit-scrollbar{width:3px}
+.screen::-webkit-scrollbar-track{background:var(--bg)}
+.screen::-webkit-scrollbar-thumb{background:var(--gdk);border-radius:2px}
+
+/* SHARED */
+.ey{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px}
+.ey::before{content:'';width:32px;height:1px;background:var(--gold)}
+.sl{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:16px;margin-bottom:52px}
+.sl::after{content:'';flex:1;height:1px;background:var(--bdr)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:16px 36px;border:none;cursor:pointer;transition:all .22s}
+.bg{background:var(--gold);color:#080403}.bg:hover{background:var(--glt)}
+.bo{background:transparent;color:var(--cream);border:1px solid var(--bdr)}.bo:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── S1 HERO ── */
+.hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
+.hbg{position:absolute;inset:0;background:url('images/hero-bg.jpg') center/cover no-repeat;filter:sepia(.4) brightness(.35) saturate(1.2)}
+.hgrad{position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,4,3,.97) 0%,rgba(8,4,3,.72) 52%,rgba(139,26,26,.15) 100%)}
+.hcontent{position:relative;padding:80px;max-width:800px}
+.hcontent h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,6.2vw,6.2rem);font-weight:300;line-height:1;margin:22px 0 26px}
+.hcontent h1 em{font-style:italic;background:linear-gradient(135deg,var(--glt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hcontent p{font-size:1rem;font-weight:300;color:var(--c2);line-height:1.75;max-width:470px;margin-bottom:40px}
+.hbtns{display:flex;gap:12px;flex-wrap:wrap}
+
+.hstrip{position:absolute;right:0;top:0;bottom:0;width:380px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:4px;opacity:.65}
+.hstrip-img{overflow:hidden}
+.hstrip-img:nth-child(1){grid-row:span 2}
+.hstrip-img:nth-child(4){grid-row:span 2}
+.hstrip-img img{width:100%;height:100%;object-fit:cover;filter:sepia(.3) saturate(1.3) brightness(.75)}
+
+/* ── S1 HOW ── */
+.how{padding:96px 80px;background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.step{background:var(--bg3);padding:48px 40px;position:relative;overflow:hidden;transition:background .3s}
+.step:hover{background:rgba(200,149,74,.06)}
+.step::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.step:hover::after{opacity:1}
+.snum{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:300;color:rgba(200,149,74,.12);line-height:1;margin-bottom:20px}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400;margin-bottom:13px;line-height:1.2}
+.sdesc{font-size:.88rem;line-height:1.75;color:var(--c2);font-weight:300}
+
+
+/* ── S1 TIRED ── */
+.tired{padding:96px 80px;background:var(--bg2)}
+.tired-tag{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.tired-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:300;line-height:1.1;margin-bottom:28px}
+.tired-h em{font-style:italic;background:linear-gradient(135deg,var(--glt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tired-sub{font-size:1.05rem;font-weight:300;color:var(--c2);line-height:1.8;max-width:620px;margin-bottom:52px}
+.tired-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:52px}
+.tired-pill{padding:12px 22px;background:rgba(139,26,26,.12);border:1px solid rgba(139,26,26,.25);color:var(--c2);font-size:.85rem;font-style:italic;border-radius:2px}
+.tired-cta-text{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--cream);border-left:3px solid var(--gold);padding-left:24px;max-width:600px;line-height:1.5}
+
+/* ── S1 MEMORY QUOTE ── */
+.memory{padding:80px;background:var(--bg);display:flex;justify-content:center}
+.memory-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.8vw,2rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--c2);max-width:700px;text-align:center;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:48px 0}
+
+/* ── S1 CTA ── */
+.lcta{padding:96px 80px;background:var(--bg2);border-top:1px solid var(--bdr);display:flex;align-items:flex-start;justify-content:space-between;gap:80px}
+.lcta h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.1}
+.lcta h2 em{font-style:italic;color:var(--gold)}
+.lcta p{color:var(--c2);font-size:.9rem;font-weight:300;margin-top:12px;max-width:320px}
+.early-form{display:flex;gap:8px;margin-top:0;flex-shrink:0}
+.early-input{background:var(--bg3);border:1px solid var(--bdr);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:.92rem;padding:16px 20px;outline:none;transition:border-color .2s;width:260px}
+.early-input:focus{border-color:var(--gold)}
+.early-input::placeholder{color:rgba(240,230,211,.25)}
+.early-note{font-size:.76rem;color:var(--gold);margin-top:12px;min-height:20px}
+
+/* ── S2 CREATE ── */
+#s2{background:var(--bg)}
+.cwrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - var(--nav))}
+.cform{padding:64px;border-right:1px solid var(--bdr)}
+.cform h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;line-height:1.1;margin:14px 0 10px}
+.cform .sub{color:var(--c2);font-size:.9rem;font-weight:300;margin-bottom:44px;line-height:1.7}
+.field{margin-bottom:26px}
+.field label{display:block;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+.field input,.field select{width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:.95rem;padding:14px 18px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.field input:focus,.field select:focus{border-color:var(--gold)}
+.field input::placeholder{color:rgba(240,230,211,.22)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}
+.chip{padding:10px 12px;background:var(--bg2);border:1px solid var(--bdr);color:var(--c2);font-size:.76rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;user-select:none}
+.chip.on{border-color:var(--gold);color:var(--gold);background:rgba(200,149,74,.07)}
+.cdot{width:6px;height:6px;border-radius:50%;border:1px solid currentColor;flex-shrink:0}
+.chip.on .cdot{background:var(--gold)}
+
+.cqr{padding:64px;display:flex;flex-direction:column;gap:10px;background:var(--bg2)}
+.qcard{background:var(--bg3);border:1px solid var(--bdr);padding:44px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0}
+.qbox{width:190px;height:190px;background:white;margin:0 auto 28px;display:flex;align-items:center;justify-content:center}
+#qrcode canvas,#qrcode img{width:190px!important;height:190px!important}
+.qname{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:5px}
+.qwhen{font-size:.7rem;letter-spacing:.13em;color:var(--c2);margin-bottom:24px}
+.qurl{background:var(--bg);border:1px solid var(--bdr);padding:11px 16px;font-size:.76rem;color:var(--gold);margin-bottom:18px;width:100%;word-break:break-all;text-align:left}
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:5px;width:100%}
+.sb{padding:10px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--bdr);background:transparent;color:var(--c2);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.sb:hover{border-color:var(--gold);color:var(--gold)}
+.sb.wa{border-color:rgba(37,211,102,.3);color:#25d366}.sb.wa:hover{background:rgba(37,211,102,.07)}
+.cinfo{padding:20px 24px;background:var(--bg3);border:1px solid var(--bdr);font-size:.8rem;color:var(--c2);line-height:2}
+.cinfo strong{color:var(--gold);font-weight:400;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;display:block;margin-bottom:8px}
+
+/* ── S3 GUEST ── */
+#s3{background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:52px 40px 80px;gap:0}
+.gintro{text-align:center;margin-bottom:44px;max-width:440px}
+.gintro h2{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:300;margin:10px 0 8px}
+.gintro p{color:var(--c2);font-size:.86rem;font-weight:300}
+
+.phone{width:375px;background:#08050a;border-radius:48px;border:1.5px solid rgba(200,149,74,.2);box-shadow:0 0 0 8px #120c0a,0 0 0 9px rgba(200,149,74,.08),0 50px 90px rgba(0,0,0,.9);overflow:hidden;position:relative;flex-shrink:0}
+.pnotch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:96px;height:26px;background:#08050a;border-radius:0 0 14px 14px;border:1.5px solid rgba(200,149,74,.1);border-top:none;z-index:5}
+.phero{position:relative;height:250px;overflow:hidden}
+.phero img{width:100%;height:100%;object-fit:cover;filter:sepia(.3) saturate(1.3) brightness(.55)}
+.phero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,4,3,.2) 0%,rgba(8,4,3,.88) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:22px;text-align:center}
+.ppill{font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(200,149,74,.15);border:1px solid rgba(200,149,74,.25);padding:5px 12px;border-radius:100px;margin-bottom:10px}
+.pcname{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;line-height:1.1}
+.pcname em{font-style:italic;color:var(--glt)}
+
+.pbody{padding:26px 22px 32px;background:var(--bg);display:flex;flex-direction:column;align-items:center}
+.pcounter{text-align:center;margin-bottom:24px}
+.cn{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1}
+.cl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c2);margin-top:3px}
+
+.uwrap{position:relative;margin-bottom:20px}
+.uglow{position:absolute;inset:-18px;border-radius:50%;background:radial-gradient(circle,rgba(200,149,74,.2) 0%,transparent 70%);animation:ug 2.5s ease-in-out infinite}
+@keyframes ug{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+.ubtn{width:130px;height:130px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;position:relative;box-shadow:0 14px 44px rgba(200,149,74,.3);transition:transform .17s}
+.ubtn:hover{transform:scale(1.05)}.ubtn:active{transform:scale(.93)}
+.ubtn span{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#080403;font-weight:600}
+
+.phint{font-size:.66rem;color:var(--c2);text-align:center;margin-bottom:20px}
+.recents{width:100%;margin-bottom:18px}
+.rlabel{font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c2);text-align:center;margin-bottom:8px}
+.rrow{display:flex;gap:5px;justify-content:center}
+.rimg{width:64px;height:64px;border-radius:7px;object-fit:cover;filter:sepia(.2) saturate(1.2) brightness(.9)}
+.pnbox{width:100%;background:rgba(200,149,74,.06);border:1px solid rgba(200,149,74,.13);padding:13px 16px;text-align:center;border-radius:5px}
+.pnbox .pt{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c2)}
+.pnbox .ps{font-size:.78rem;color:var(--gold);margin-top:3px}
+
+/* ── S4 GALLERY ── */
+#s4{background:var(--bg)}
+.gtop{position:sticky;top:0;background:rgba(8,4,3,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--bdr);padding:18px 48px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.gtitle h2{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;margin-bottom:6px}
+.gmrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.lpill{display:inline-flex;align-items:center;gap:6px;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#4ade80;background:rgba(74,222,128,.09);border:1px solid rgba(74,222,128,.2);padding:5px 12px;border-radius:100px}
+.ldot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:ld 1.5s ease infinite}
+@keyframes ld{0%,100%{opacity:1}50%{opacity:.3}}
+.gmeta{font-size:.74rem;color:var(--c2)}
+.gactions{display:flex;gap:8px}
+
+.gfilts{display:flex;gap:4px;padding:14px 48px;border-bottom:1px solid var(--bdr);flex-wrap:wrap}
+.gf{padding:7px 18px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid var(--bdr);color:var(--c2);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.gf:hover{border-color:var(--gold);color:var(--cream)}
+.gf.on{background:var(--gold);border-color:var(--gold);color:#080403;font-weight:500}
+
+.masonry{padding:10px 48px 60px;columns:5;column-gap:7px}
+.gi{break-inside:avoid;margin-bottom:7px;position:relative;cursor:pointer;overflow:hidden;animation:gfade .4s ease both}
+@keyframes gfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.gi img{width:100%;display:block;filter:sepia(.15) saturate(1.25) brightness(.92) contrast(1.05);transition:transform .4s ease,filter .3s}
+.gi:hover img{transform:scale(1.04);filter:sepia(.05) saturate(1.4) brightness(1)}
+.gov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,4,3,.85) 0%,transparent 55%);opacity:0;transition:opacity .28s;display:flex;align-items:flex-end;padding:14px}
+.gi:hover .gov{opacity:1}
+.govn{color:var(--cream);font-size:.78rem;font-weight:500}
+.govs{color:var(--c2);font-size:.64rem;margin-top:2px}
+
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--bg3);border:1px solid var(--bdr);padding:12px 26px;display:flex;align-items:center;gap:12px;font-size:.8rem;white-space:nowrap;z-index:1000;pointer-events:none;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.tdot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">Yaadein</div>
+  <div class="tabs">
+    <button class="tab on" data-t="s1">How It Works</button>
+    <button class="tab" data-t="s2">Create Event</button>
+    <button class="tab" data-t="s3">Guest View</button>
+    <button class="tab" data-t="s4">Live Gallery</button>
+  </div>
+</nav>
+
+<!-- ═══════════ S1: LANDING ═══════════ -->
+<div id="s1" class="screen on">
+
+  <section class="hero">
+    <div class="hbg"></div>
+    <div class="hgrad"></div>
+    <div class="hcontent">
+      <h1>Every guest<br>has a <em>moment</em><br>you missed.</h1>
+      <p class="hero-desc">Yaadein collects every candid, every dance, every tear from every guest into one live shared album. No app. No login. One QR code.</p>
+      <div class="hbtns">
+        <button class="btn bg" data-go="s2">Create your first event</button>
+        <button class="btn bo" data-sc="how">See how it works</button>
+      </div>
+    </div>
+    <div class="hstrip">
+      <div class="hstrip-img"><img src="images/strip/1.jpg" alt="Indian wedding ceremony"></div>
+      <div class="hstrip-img"><img src="images/strip/2.jpg" alt="Haldi ceremony"></div>
+      <div class="hstrip-img"><img src="images/strip/3.jpg" alt="Sangeet dance celebration"></div>
+      <div class="hstrip-img"><img src="images/strip/4.jpg" alt="Indian bride"></div>
+      <div class="hstrip-img"><img src="images/strip/5.jpg" alt="Baraat procession"></div>
+      <div class="hstrip-img"><img src="images/strip/6.jpg" alt="Wedding reception"></div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="sl">How it works</div>
+    <div class="steps">
+      <div class="step">
+        <div class="snum">01</div>
+        <div class="stitle">Create your event</div>
+        <p class="sdesc">Enter the couple names and wedding date. Pick your sub-events. You get a QR code and a private link instantly. Print it. WhatsApp it. Put it on the welcome table.</p>
+      </div>
+      <div class="step">
+        <div class="snum">02</div>
+        <div class="stitle">Guests scan and upload</div>
+        <p class="sdesc">Any guest scans the QR code. The camera opens on their phone immediately. No app. No Google account. No login. They tap upload and their memory is in the album.</p>
+      </div>
+      <div class="step">
+        <div class="snum">03</div>
+        <div class="stitle">Everything in one place</div>
+        <p class="sdesc">Every upload appears live in a shared gallery organized by Haldi, Sangeet, Baraat and Reception. Download everything in full quality. Organized by event. Yours to keep.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tired">
+    <div class="tired-tag">Sound familiar?</div>
+    <h2 class="tired-h">We are tired of the<br><em>WhatsApp group mess.</em></h2>
+    <p class="tired-sub">
+      One wedding. And somehow the photos end up scattered across 12 WhatsApp forwards, a Google Drive link nobody opened, and three cousin's camera rolls that nobody will ever share.
+    </p>
+    <div class="tired-pills">
+      <div class="tired-pill">"Send me on WhatsApp yaar"</div>
+      <div class="tired-pill">"The Drive link expired"</div>
+      <div class="tired-pill">"Video too large to send"</div>
+      <div class="tired-pill">"Who has the pheras video?"</div>
+      <div class="tired-pill">"Bhaiya forward kar na"</div>
+      <div class="tired-pill">"I forgot to upload"</div>
+    </div>
+    <p class="tired-cta-text">Yaadein puts every guest photo in one place. Automatically. Before the night ends.</p>
+  </section>
+
+  <section class="memory">
+    <p class="memory-quote">The baraat video your father-in-law took. The moment your best friend cried. The cousins dancing at midnight. You were there. You should have all of it.</p>
+  </section>
+
+  <section class="lcta">
+    <div>
+      <h2>Be the first<br>to use <em>Yaadein.</em></h2>
+      <p>We are building this for Indian weddings. Leave your email and we will reach out personally.</p>
+    </div>
+    <div>
+      <div class="early-form">
+        <input type="email" class="early-input" placeholder="your@email.com" id="earlyEmail">
+        <a id="earlyBtn" class="btn bg" style="padding:18px 36px;font-size:.78rem;text-decoration:none;cursor:pointer" onclick="submitEmail()">Get Early Access</a>
+      </div>
+      <p class="early-note" id="early-note"></p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════ S2: CREATE EVENT ═══════════ -->
+<div id="s2" class="screen">
+  <div class="cwrap">
+    <div class="cform">
+      <div class="ey">New Event</div>
+      <h2>Create your<br>wedding event.</h2>
+      <p class="sub">Fill in the details and your QR code is ready instantly. Print it, WhatsApp it, or display it at the venue entrance.</p>
+
+      <div class="field">
+        <label>Couple Names</label>
+        <div class="frow">
+          <input type="text" id="n1" placeholder="Rahul Sharma" oninput="uqr()">
+          <input type="text" id="n2" placeholder="Priya Mehta" oninput="uqr()">
+        </div>
+      </div>
+      <div class="field">
+        <label>Wedding Date</label>
+        <input type="date" id="wdate" oninput="uqr()">
+      </div>
+      <div class="field">
+        <label>Expected Guests</label>
+        <input type="number" placeholder="350" min="1">
+      </div>
+      <div class="field">
+        <label>Sub Events</label>
+        <div class="chips">
+          <div class="chip on" onclick="this.classList.toggle('on')"><span class="cdot"></span>Haldi</div>
+          <div class="chip on" onclick="this.classList.toggle('on')"><span class="cdot"></span>Sangeet</div>
+          <div class="chip" onclick="this.classList.toggle('on')"><span class="cdot"></span>Mehendi</div>
+          <div class="chip on" onclick="this.classList.toggle('on')"><span class="cdot"></span>Baraat</div>
+          <div class="chip on" onclick="this.classList.toggle('on')"><span class="cdot"></span>Reception</div>
+          <div class="chip" onclick="this.classList.toggle('on')"><span class="cdot"></span>After Party</div>
+        </div>
+      </div>
+      <button class="btn bg" onclick="genQR()">
+        Generate QR Code
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <div class="cqr">
+      <div class="qcard">
+        <div class="qbox"><div id="qrcode"></div></div>
+        <div class="qname" id="qn">Rahul &amp; Priya</div>
+        <div class="qwhen" id="qd">Wedding · Select a date</div>
+        <div class="qurl" id="qu">yaadein.app/rp-wed-25</div>
+        <div class="srow">
+          <button class="sb wa">WhatsApp</button>
+          <button class="sb">Copy Link</button>
+          <button class="sb">Download QR</button>
+          <button class="sb">Print Card</button>
+        </div>
+      </div>
+      <div class="cinfo">
+        <strong>What to do next</strong>
+        Print the QR code and place it at the entrance and welcome table<br>
+        Share the link on your wedding WhatsApp group<br>
+        The gallery fills up automatically as guests upload
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S3: GUEST VIEW ═══════════ -->
+<div id="s3" class="screen">
+  <div class="gintro">
+    <div class="ey" style="justify-content:center">Guest Experience</div>
+    <h2>What guests see when they scan.</h2>
+    <p>No app. No login. Scan and upload in under 30 seconds.</p>
+  </div>
+  <div class="phone">
+    <div class="pnotch"></div>
+    <div class="phero">
+      <img src="images/phone-hero.jpg" alt="Wedding guests celebrating">
+      <div class="phero-ov">
+        <div class="ppill">Rahul &amp; Priya · Wedding 2025</div>
+        <div class="pcname">Share your <em>moment</em></div>
+      </div>
+    </div>
+    <div class="pbody">
+      <div class="pcounter">
+        <div class="cn" id="gc">312</div>
+        <div class="cl">memories shared so far</div>
+      </div>
+      <div class="uwrap">
+        <div class="uglow"></div>
+        <button class="ubtn" onclick="tap()">
+          <svg width="26" height="26" fill="none" stroke="#080403" stroke-width="1.6" viewBox="0 0 24 24">
+            <path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <circle cx="12" cy="13" r="3"/>
+          </svg>
+          <span>Add Photo</span>
+        </button>
+      </div>
+      <div class="phint">Tap to open camera or choose from gallery</div>
+      <div class="recents">
+        <div class="rlabel">Recent from guests</div>
+        <div class="rrow">
+          <img class="rimg" src="images/thumbs/haldi.jpg" alt="Haldi ceremony photo">
+          <img class="rimg" src="images/thumbs/sangeet.jpg" alt="Sangeet dance photo">
+          <img class="rimg" src="images/thumbs/bride.jpg" alt="Indian bride photo">
+          <img class="rimg" src="images/thumbs/reception.jpg" alt="Wedding reception photo">
+        </div>
+      </div>
+      <div class="pnbox">
+        <div class="pt">Your name (optional)</div>
+        <div class="ps">So the couple knows it is from you</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S4: GALLERY ═══════════ -->
+<div id="s4" class="screen">
+  <div class="gtop">
+    <div class="gtitle">
+      <h2>Rahul &amp; Priya's Wedding</h2>
+      <div class="gmrow">
+        <span class="lpill"><span class="ldot"></span>Live</span>
+        <span class="gmeta" id="gm">312 photos · 28 videos · 47 guests uploading</span>
+      </div>
+    </div>
+    <div class="gactions">
+      <button class="btn bo" style="padding:10px 20px;font-size:.7rem">Download All</button>
+      <button class="btn bg" style="padding:10px 20px;font-size:.7rem">Share Gallery</button>
+    </div>
+  </div>
+  <div class="gfilts">
+    <button class="gf on" onclick="filt(this)">All</button>
+    <button class="gf" onclick="filt(this)">Haldi</button>
+    <button class="gf" onclick="filt(this)">Sangeet</button>
+    <button class="gf" onclick="filt(this)">Baraat</button>
+    <button class="gf" onclick="filt(this)">Reception</button>
+  </div>
+  <div class="masonry" id="masonry"></div>
+</div>
+
+<div class="toast" id="toast"><span class="tdot"></span><span id="ttxt">Anjali uploaded 2 new photos</span></div>
+
+<script>
+// ── NAVIGATION ──
+const SCREENS = document.querySelectorAll('.screen');
+const TABS = document.querySelectorAll('.tab');
+
+function goTo(id) {
+  SCREENS.forEach(s => { s.classList.remove('on'); s.scrollTop = 0; });
+  TABS.forEach(t => t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  TABS.forEach(t => { if (t.dataset.t === id) t.classList.add('on'); });
+  if (id === 's4') buildGallery('all');
+}
+
+TABS.forEach(t => t.addEventListener('click', () => goTo(t.dataset.t)));
+
+document.addEventListener('click', e => {
+  const go = e.target.closest('[data-go]');
+  if (go) { goTo(go.dataset.go); return; }
+  const sc = e.target.closest('[data-sc]');
+  if (sc) {
+    const el = document.getElementById(sc.dataset.sc);
+    if (el) document.getElementById('s1').scrollTo({ top: el.offsetTop - 10, behavior: 'smooth' });
+  }
+});
+
+// ── QR & FORM ──
+function uqr() {
+  const n1 = document.getElementById('n1').value || 'Rahul';
+  const n2 = document.getElementById('n2').value || 'Priya';
+  const d  = document.getElementById('wdate').value;
+  document.getElementById('qn').textContent = `${n1} & ${n2}`;
+  if (d) {
+    const ds = new Date(d).toLocaleDateString('en-IN', {day:'numeric',month:'long',year:'numeric'});
+    document.getElementById('qd').textContent = `Wedding · ${ds}`;
+  }
+  const slug = `${n1[0].toLowerCase()}${n2[0].toLowerCase()}-wed-${String(new Date().getFullYear()).slice(-2)}`;
+  document.getElementById('qu').textContent = `yaadein.app/${slug}`;
+}
+
+function genQR() {
+  document.getElementById('qrcode').innerHTML = '';
+  new QRCode(document.getElementById('qrcode'), {
+    text: 'https://' + document.getElementById('qu').textContent,
+    width: 190, height: 190, colorDark: '#080403', colorLight: '#ffffff'
+  });
+}
+setTimeout(genQR, 600);
+
+// ── EARLY ACCESS ──
+function submitEmail() {
+  const el = document.getElementById('earlyEmail');
+  const note = document.getElementById('early-note');
+  const btn = document.getElementById('earlyBtn');
+  const val = el.value.trim();
+  if (!val || !val.includes('@')) {
+    note.style.color = '#e07070';
+    note.textContent = 'Enter a valid email.';
+    return;
+  }
+  note.style.color = 'var(--c2)';
+  note.textContent = 'Sending...';
+  btn.style.pointerEvents = 'none';
+  fetch('https://formsubmit.co/ajax/sharmavs2001@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      email: val,
+      _subject: 'Yaadein Early Access Request',
+      _template: 'box',
+      message: `Early access request from: ${val}`
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.success === 'true' || data.success === true) {
+      note.style.color = 'var(--gold)';
+      note.textContent = 'We have your email. We will be in touch personally.';
+      el.value = '';
+      el.disabled = true;
+    } else {
+      throw new Error();
+    }
+  })
+  .catch(() => {
+    note.style.color = '#e07070';
+    note.textContent = 'Something went wrong. Please try again.';
+    btn.style.pointerEvents = 'auto';
+  });
+}
+
+// ── GUEST TAP ──
+let gc = 312;
+function tap() {
+  gc++;
+  document.getElementById('gc').textContent = gc;
+  const b = document.querySelector('.ubtn');
+  b.style.transform = 'scale(.88)';
+  setTimeout(() => b.style.transform = '', 160);
+}
+
+// ── GALLERY ──
+const GNAMES = ['Anjali K.','Rohit M.','Priyanka S.','Arjun T.','Deepika N.','Vikram P.','Sneha R.','Karan V.','Pooja A.','Meera G.','Nikhil B.','Siya T.'];
+const GH = [175,240,195,285,160,220,305,190,255,168,235,270,185,215,260,178,248,298,188,225];
+
+const CAT_IMGS = {
+  haldi:     ['haldi/1.jpg','haldi/2.jpg','haldi/3.jpg','haldi/4.jpg','haldi/5.jpg'],
+  sangeet:   ['sangeet/1.jpg','sangeet/2.jpg','sangeet/3.jpg','sangeet/4.jpg','sangeet/5.jpg'],
+  baraat:    ['baraat/1.jpg','baraat/2.jpg','baraat/3.jpg','baraat/4.jpg','baraat/5.jpg'],
+  reception: ['reception/1.jpg','reception/2.jpg','reception/3.jpg','reception/4.jpg','reception/5.jpg','reception/6.jpg']
+};
+CAT_IMGS.all = [...CAT_IMGS.haldi, ...CAT_IMGS.sangeet, ...CAT_IMGS.baraat, ...CAT_IMGS.reception];
+const CAT_LABELS = {
+  all: ['Haldi','Sangeet','Baraat','Reception'],
+  haldi: ['Haldi'], sangeet: ['Sangeet'], baraat: ['Baraat'], reception: ['Reception']
+};
+
+let currentCat = 'all';
+
+function shuffle(arr) {
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+function buildGallery(cat) {
+  cat = cat || currentCat;
+  const imgs = shuffle(CAT_IMGS[cat]);
+  const labels = CAT_LABELS[cat];
+  const g = document.getElementById('masonry');
+  g.innerHTML = '';
+  imgs.forEach((img, i) => {
+    const el = document.createElement('div');
+    el.className = 'gi';
+    el.style.animationDelay = `${(i % 8) * .05}s`;
+    el.innerHTML = `
+      <img src="images/${img}" alt="" loading="lazy">
+      <div class="gov"><div>
+        <div class="govn">${GNAMES[i % GNAMES.length]}</div>
+        <div class="govs">${labels[i % labels.length]} · just now</div>
+      </div></div>`;
+    g.appendChild(el);
+  });
+}
+
+function filt(btn) {
+  document.querySelectorAll('.gf').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  currentCat = btn.textContent.trim().toLowerCase();
+  if (!CAT_IMGS[currentCat]) currentCat = 'all';
+  buildGallery(currentCat);
+}
+
+// ── LIVE TOASTS ──
+const TNS = ['Anjali','Rohit','Priyanka','Arjun','Deepika','Meera','Sneha','Karan'];
+let pt = 312;
+
+function fireToast() {
+  if (!document.getElementById('s4').classList.contains('on')) return;
+  const name = TNS[Math.floor(Math.random() * TNS.length)];
+  const c = Math.floor(Math.random() * 4) + 1;
+  document.getElementById('ttxt').textContent = `${name} uploaded ${c} new photo${c > 1 ? 's' : ''}`;
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+  pt += c;
+  document.getElementById('gm').textContent = `${pt} photos · 28 videos · ${40 + Math.floor(Math.random() * 15)} guests uploading`;
+  if (Math.random() > .45) {
+    setTimeout(() => {
+      const g = document.getElementById('masonry');
+      const imgs = CAT_IMGS[currentCat] || CAT_IMGS.all;
+      const src = 'images/' + imgs[Math.floor(Math.random() * imgs.length)];
+      const labels = CAT_LABELS[currentCat] || CAT_LABELS.all;
+      const el = document.createElement('div');
+      el.className = 'gi';
+      el.innerHTML = `
+        <img src="${src}" alt="">
+        <div class="gov"><div>
+          <div class="govn">${name}</div>
+          <div class="govs">${labels[0]} · Just now</div>
+        </div></div>`;
+      g.insertBefore(el, g.firstChild);
+    }, 700);
+  }
+}
+
+setInterval(fireToast, 4500);
+buildGallery('all');
+</script>
+
+<!-- Crawlable content for search engines and AI. Not visible to users. -->
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+  <h2>About Yaadein</h2>
+  <p>Yaadein is a wedding guest photo sharing app built for Indian weddings. Guests scan a QR code at the wedding and upload their photos and videos instantly into one shared live album. No app download required. No login required. Works on any smartphone.</p>
+
+  <h2>How Yaadein Works</h2>
+  <p>The couple, photographer, or wedding organiser creates an event on Yaadein and receives a unique QR code. This QR code is printed and placed at the venue. Wedding guests scan the QR code, their phone camera opens immediately, and they upload photos directly into the shared album. Photos are organized by sub-event: Haldi, Sangeet, Baraat, and Reception. The couple downloads everything in full quality after the wedding.</p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>Do guests need to download an app?</h3>
+  <p>No. Yaadein works entirely in the browser. Guests scan the QR code and the camera opens immediately. No app download. No Google account. No login of any kind.</p>
+
+  <h3>What is Yaadein used for?</h3>
+  <p>Yaadein is used to collect photos and videos from wedding guests into one organized shared album. It replaces the chaos of WhatsApp groups and Google Drive links that are commonly used at Indian weddings.</p>
+
+  <h3>How much does Yaadein cost?</h3>
+  <p>Yaadein costs ₹2,999 per wedding event. This includes unlimited guests, unlimited photo and video uploads, a live shared gallery, and full quality downloads for 30 days.</p>
+
+  <h3>Does Yaadein work at Indian weddings?</h3>
+  <p>Yes. Yaadein is specifically built for Indian weddings. It supports multi-day wedding events with separate albums for Haldi, Sangeet, Mehendi, Baraat, and Reception.</p>
+
+  <h3>What happens to the photos after the wedding?</h3>
+  <p>Photos are stored for 30 days. The couple can download everything in full quality before the storage expires. Photos are organized by sub-event for easy browsing.</p>
+
+  <h3>Can photographers use Yaadein?</h3>
+  <p>Yes. Wedding photographers use Yaadein to offer clients a guest photo collection as a premium add-on to their photography package. Photographers get access to all guest uploads alongside their own professional shots.</p>
+
+  <h3>Is there an alternative to WhatsApp for sharing wedding photos?</h3>
+  <p>Yes. Yaadein is built specifically as an alternative to WhatsApp groups and Google Drive links for collecting wedding guest photos. It is faster, better organized, and requires no login from guests.</p>
+
+  <h3>How is Yaadein different from Google Photos shared albums?</h3>
+  <p>Google Photos shared albums require guests to sign in with a Google account. Many guests give up at this step. Yaadein requires no account or login. Guests simply scan a QR code and upload. Photos are also automatically organized by wedding sub-event, unlike Google Photos which puts everything in one folder.</p>
+</div>
+
+</body>
+</html>

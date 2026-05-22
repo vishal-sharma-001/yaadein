@@ -1,0 +1,41 @@
+# Yaadein
+
+> Yaadein is a wedding guest photo sharing platform built for Indian weddings.
+
+## What Yaadein Does
+
+Yaadein lets wedding guests upload their photos and videos into one shared live album by scanning a QR code. No app download required. No login required. Works on any phone.
+
+The event organiser, couple, or photographer creates an event in under a minute and receives a unique QR code. Guests scan the QR code at the wedding and their photos appear instantly in a live shared gallery organized by sub-event: Haldi, Sangeet, Baraat, and Reception.
+
+## The Problem It Solves
+
+At Indian weddings, hundreds of guests take photos and videos on their phones. These memories get scattered across WhatsApp forwards, expired Google Drive links, and cousin's camera rolls that never get shared. The couple misses most of what guests captured — candid moments, emotional reactions, behind-the-scenes footage that no professional photographer could be in two places to capture.
+
+Yaadein collects every guest photo into one organized, downloadable album before the night ends.
+
+## Who It Is For
+
+- Wedding couples who want every guest memory, not just the photographer's shots
+- Wedding photographers who want to offer guests a shared album as a premium add-on
+- Wedding planners and organisers running multi-day Indian weddings
+
+## Key Features
+
+- QR code guest access — no app, no login, works on any phone
+- Live gallery — photos appear in real time as guests upload
+- Organized by sub-event — Haldi, Sangeet, Baraat, Reception
+- Full quality downloads — couple gets everything organized
+- Works on bad WiFi — uploads queue and sync automatically
+
+## Pricing
+
+₹2,999 per wedding event. Includes unlimited guests, unlimited uploads, live gallery, and full quality downloads for 30 days.
+
+## Location
+
+Built for Indian weddings. Based in India.
+
+## Contact
+
+Early access: https://yaadein.app
