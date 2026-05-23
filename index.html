@@ -149,6 +149,18 @@ body::after{
 .tired-pill{padding:12px 22px;background:var(--red-bg);border:1px solid var(--red-bdr);color:var(--c2);font-size:.85rem;font-style:italic;border-radius:2px}
 .tired-cta-text{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--cream);border-left:3px solid var(--gold);padding-left:24px;max-width:600px;line-height:1.5}
 
+/* ── COMPARE TABLE ── */
+.compare{margin-bottom:52px;border:1px solid var(--bdr);border-radius:2px;overflow:hidden}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--bdr)}
+.compare-row:last-child{border-bottom:none}
+.compare-row div{padding:18px 24px;font-size:.88rem;line-height:1.6;color:var(--c2);display:flex;align-items:center;gap:10px}
+.compare-row div:first-child{border-right:1px solid var(--bdr);background:rgba(139,26,26,.05)}
+.compare-row div:last-child{background:rgba(200,149,74,.04)}
+.compare-head{background:var(--bg3)!important}
+.compare-head div{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;padding:14px 24px!important;background:var(--bg3)!important}
+.cx{color:#8b3a3a;font-size:.9rem;flex-shrink:0;font-style:normal}
+.ck{color:#4ade80;font-size:.9rem;flex-shrink:0;font-style:normal}
+
 /* ── S1 MEMORY QUOTE ── */
 .memory{padding:80px;background:var(--bg);display:flex;justify-content:center}
 .memory-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.8vw,2rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--c2);max-width:700px;text-align:center;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:48px 0}
@@ -163,6 +175,11 @@ body::after{
 .early-input:focus{border-color:var(--gold)}
 .early-input::placeholder{color:rgba(240,230,211,.25)}
 .early-note{font-size:.76rem;color:var(--gold);margin-top:12px;min-height:20px}
+
+/* ── PREVIEW BAR ── */
+.preview-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 48px;background:rgba(200,149,74,.08);border-bottom:1px solid rgba(200,149,74,.2);font-size:.78rem;color:var(--c2);flex-wrap:wrap}
+.preview-cta{background:none;border:1px solid var(--gold);color:var(--gold);font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;cursor:pointer;transition:all .2s;flex-shrink:0}
+.preview-cta:hover{background:var(--gold);color:#080403}
 
 /* ── S2 CREATE ── */
 #s2{background:var(--bg)}
@@ -212,12 +229,12 @@ body::after{
 .pcname em{font-style:italic;color:var(--glt)}
 
 .pbody{padding:26px 22px 32px;background:var(--bg);display:flex;flex-direction:column;align-items:center}
-.pcounter{text-align:center;margin-bottom:24px}
-.cn{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1}
-.cl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c2);margin-top:3px}
+.pcounter{text-align:center;margin-bottom:36px}
+.cn{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.2}
+.cl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c2);margin-top:8px}
 
 .uwrap{position:relative;margin-bottom:20px}
-.uglow{position:absolute;inset:-18px;border-radius:50%;background:radial-gradient(circle,rgba(200,149,74,.2) 0%,transparent 70%);animation:ug 2.5s ease-in-out infinite}
+.uglow{position:absolute;inset:-24px;border-radius:50%;background:radial-gradient(circle,rgba(200,149,74,.15) 0%,transparent 70%);animation:ug 2.5s ease-in-out infinite}
 @keyframes ug{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
 .ubtn{width:130px;height:130px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;position:relative;box-shadow:0 14px 44px rgba(200,149,74,.3);transition:transform .17s}
 .ubtn:hover{transform:scale(1.05)}.ubtn:active{transform:scale(.93)}
@@ -307,6 +324,10 @@ body::after{
   .memory{padding:48px 24px}
   .tired-h{font-size:2.2rem}
   .tired-sub{font-size:.95rem}
+  .compare-row{grid-template-columns:1fr}
+  .compare-row div:first-child{border-right:none;border-bottom:1px solid var(--bdr)}
+  .compare-head div:last-child{display:none}
+  .compare-head div:first-child{letter-spacing:.15em}
 
   /* CTA */
   .lcta{padding:56px 24px;flex-direction:column;gap:28px}
@@ -317,6 +338,9 @@ body::after{
   /* Footer */
   .footer{padding:40px 24px;flex-direction:column;align-items:flex-start;gap:24px}
   .footer-right{text-align:left}
+
+  /* Preview bar */
+  .preview-bar{padding:10px 20px}
 
   /* Create Event */
   .cwrap{grid-template-columns:1fr}
@@ -405,13 +429,41 @@ body::after{
       One wedding. And somehow the photos end up scattered across 12 WhatsApp forwards, a Google Drive link nobody opened, and three cousin's camera rolls that nobody will ever share.
     </p>
     <div class="tired-pills">
-      <div class="tired-pill">"Send me on WhatsApp yaar"</div>
-      <div class="tired-pill">"The Drive link expired"</div>
       <div class="tired-pill">"Video too large to send"</div>
-      <div class="tired-pill">"Who has the pheras video?"</div>
-      <div class="tired-pill">"Bhaiya forward kar na"</div>
-      <div class="tired-pill">"I forgot to upload"</div>
+      <div class="tired-pill">"The Drive link expired"</div>
+      <div class="tired-pill">"Create a shared album they said"</div>
+      <div class="tired-pill">"Half the guests couldn't sign in"</div>
+      <div class="tired-pill">"I'll send it tomorrow"</div>
+      <div class="tired-pill">"It's somewhere in my camera roll"</div>
     </div>
+
+    <div class="compare">
+      <div class="compare-row compare-head">
+        <div>The old way</div>
+        <div>With Yaadein</div>
+      </div>
+      <div class="compare-row">
+        <div><span class="cx">✕</span> Guest needs a Google account to upload</div>
+        <div><span class="ck">✓</span> Scan QR, upload in 10 seconds. No account.</div>
+      </div>
+      <div class="compare-row">
+        <div><span class="cx">✕</span> Photos scattered across 5 WhatsApp groups</div>
+        <div><span class="ck">✓</span> Every guest photo in one live album</div>
+      </div>
+      <div class="compare-row">
+        <div><span class="cx">✕</span> Drive link expires, nobody opens it</div>
+        <div><span class="ck">✓</span> Live gallery, accessible for 30 days</div>
+      </div>
+      <div class="compare-row">
+        <div><span class="cx">✕</span> Everything dumped in one folder</div>
+        <div><span class="ck">✓</span> Sorted by Haldi, Sangeet, Baraat, Reception</div>
+      </div>
+      <div class="compare-row">
+        <div><span class="cx">✕</span> Couple gets 60 photos from 8 people</div>
+        <div><span class="ck">✓</span> 500+ photos from every single guest</div>
+      </div>
+    </div>
+
     <p class="tired-cta-text">Yaadein puts every guest photo in one place. Automatically. Before the night ends.</p>
   </section>
 
@@ -448,6 +500,10 @@ body::after{
 
 <!-- ═══════════ S2: CREATE EVENT ═══════════ -->
 <div id="s2" class="screen">
+  <div class="preview-bar">
+    <span>This is a preview. The actual product is coming soon.</span>
+    <button class="preview-cta" onclick="goTo('s1');setTimeout(()=>{document.getElementById('early').scrollIntoView({behavior:'smooth'});document.getElementById('earlyForm').querySelector('input').focus()},300)">Get Early Access</button>
+  </div>
   <div class="cwrap">
     <div class="cform">
       <div class="ey">New Event</div>
