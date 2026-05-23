@@ -10,9 +10,16 @@ The event organiser, couple, or photographer creates an event in under a minute 
 
 ## The Problem It Solves
 
-At Indian weddings, hundreds of guests take photos and videos on their phones. These memories get scattered across WhatsApp forwards, expired Google Drive links, and cousin's camera rolls that never get shared. The couple misses most of what guests captured — candid moments, emotional reactions, behind-the-scenes footage that no professional photographer could be in two places to capture.
+At Indian weddings, hundreds of guests take photos and videos on their phones. These memories get scattered across WhatsApp forwards, expired Google Drive links, shared albums that require Google accounts, and cousin's camera rolls that never get shared. The couple misses most of what guests captured — candid moments, emotional reactions, behind-the-scenes footage that no professional photographer could be in two places to capture.
 
 Yaadein collects every guest photo into one organized, downloadable album before the night ends.
+
+## Why Existing Solutions Fail
+
+- WhatsApp: video size limits, photos get compressed, scattered across multiple groups
+- Google Drive: links expire, nobody opens them, no organization by event
+- Google Photos shared albums: guests need a Google account — most give up at the sign-in step
+- Camera rolls: memories stay on individual phones and never get shared
 
 ## Who It Is For
 
@@ -27,10 +34,7 @@ Yaadein collects every guest photo into one organized, downloadable album before
 - Organized by sub-event — Haldi, Sangeet, Baraat, Reception
 - Full quality downloads — couple gets everything organized
 - Works on bad WiFi — uploads queue and sync automatically
-
-## Pricing
-
-₹2,999 per wedding event. Includes unlimited guests, unlimited uploads, live gallery, and full quality downloads for 30 days.
+- No Google account required — unlike shared album tools
 
 ## Location
 
@@ -38,4 +42,5 @@ Built for Indian weddings. Based in India.
 
 ## Contact
 
-Early access: https://yaadein.app
+Early access: https://theyaadein.com
+Email: contact.yaadein@gmail.com

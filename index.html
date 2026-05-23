@@ -14,14 +14,14 @@
 <meta name="keywords" content="wedding guest photo sharing, Indian wedding app, shaadi photo album, QR code wedding photos, wedding memories India, guest upload photos wedding">
 <meta name="author" content="Yaadein">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vishal-sharma-001.github.io/yaadein/">
+<link rel="canonical" href="https://theyaadein.com/">
 
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn previews) -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://vishal-sharma-001.github.io/yaadein/">
+<meta property="og:url" content="https://theyaadein.com/">
 <meta property="og:title" content="Yaadein | Guest Photo Sharing for Indian Weddings">
 <meta property="og:description" content="Collect every candid from every guest. One QR code. No app. No login. Built for Indian weddings.">
-<meta property="og:image" content="https://vishal-sharma-001.github.io/yaadein/images/hero-bg.jpg">
+<meta property="og:image" content="https://theyaadein.com/images/hero-bg.jpg">
 <meta property="og:locale" content="en_IN">
 <meta property="og:site_name" content="Yaadein">
 
@@ -29,7 +29,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yaadein | Guest Photo Sharing for Indian Weddings">
 <meta name="twitter:description" content="Collect every candid from every guest. One QR code. No app. No login.">
-<meta name="twitter:image" content="https://vishal-sharma-001.github.io/yaadein/images/hero-bg.jpg">
+<meta name="twitter:image" content="https://theyaadein.com/images/hero-bg.jpg">
 
 <!-- Schema.org Structured Data -->
 <script type="application/ld+json">
@@ -37,7 +37,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Yaadein",
-  "url": "https://vishal-sharma-001.github.io/yaadein",
+  "url": "https://theyaadein.com",
   "description": "Wedding guest photo sharing app for Indian weddings. Guests scan a QR code and upload photos instantly into one live shared album. No app download. No login required.",
   "applicationCategory": "PhotographyApplication",
   "operatingSystem": "Web",
@@ -163,7 +163,7 @@ body::after{
 
 /* ── S1 MEMORY QUOTE ── */
 .memory{padding:80px;background:var(--bg);display:flex;justify-content:center}
-.memory-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.8vw,2rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--c2);max-width:700px;text-align:center;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:48px 0}
+.memory-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--cream);max-width:700px;text-align:center;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:52px 0}
 
 /* ── S1 CTA ── */
 .lcta{padding:96px 80px;background:var(--bg2);border-top:1px solid var(--bdr);display:flex;align-items:flex-start;justify-content:space-between;gap:80px}
@@ -284,6 +284,9 @@ body::after{
 .footer-brand .logo{font-size:1.1rem;margin-bottom:6px}
 .footer-tag{font-size:.78rem;color:var(--c2);font-weight:300}
 .footer-right{text-align:right}
+.footer-nav{display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap}
+.footer-nav a{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c2);text-decoration:none;transition:color .2s}
+.footer-nav a:hover{color:var(--gold)}
 .footer-contact{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:color .2s;display:inline-block;margin-bottom:12px}
 .footer-contact:hover{color:var(--glt)}
 .footer-copy{font-size:.64rem;color:var(--gdk);letter-spacing:.06em}
@@ -491,7 +494,13 @@ body::after{
       <div class="footer-tag">Guest photo sharing for Indian weddings.</div>
     </div>
     <div class="footer-right">
-      <a href="mailto:sharmavs2001@gmail.com" class="footer-contact">Get in touch</a>
+      <div class="footer-nav">
+        <a href="#" onclick="goTo('s1');return false;">How it works</a>
+        <a href="#" onclick="goTo('s2');return false;">Create event</a>
+        <a href="#" onclick="goTo('s4');return false;">Live gallery</a>
+        <a href="#" onclick="goTo('s1');setTimeout(()=>document.getElementById('early').scrollIntoView({behavior:'smooth'}),300);return false;">Get early access</a>
+      </div>
+      <a href="mailto:contact.yaadein@gmail.com" class="footer-contact">contact.yaadein@gmail.com</a>
       <div class="footer-copy">© 2026 Yaadein. All rights reserved.</div>
     </div>
   </footer>
@@ -547,7 +556,7 @@ body::after{
         <div class="qbox"><div id="qrcode"></div></div>
         <div class="qname" id="qn">Rahul &amp; Priya</div>
         <div class="qwhen" id="qd">Wedding · Select a date</div>
-        <div class="qurl" id="qu">yaadein.app/rp-wed-25</div>
+        <div class="qurl" id="qu">theyaadein.com/rp-wed-25</div>
         <div class="srow">
           <button class="sb wa">WhatsApp</button>
           <button class="sb">Copy Link</button>
@@ -696,7 +705,7 @@ function uqr() {
     document.getElementById('qd').textContent = `Wedding · ${ds}`;
   }
   const slug = `${n1[0].toLowerCase()}${n2[0].toLowerCase()}-wed-${String(new Date().getFullYear()).slice(-2)}`;
-  document.getElementById('qu').textContent = `yaadein.app/${slug}`;
+  document.getElementById('qu').textContent = `theyaadein.com/${slug}`;
 }
 
 function genQR() {
