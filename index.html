@@ -1484,7 +1484,8 @@ function goTo(id) {
     if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 80);
     s1ReturnId = null;
   }
-  location.hash = HASH_MAP[id] || '';
+  if (HASH_MAP[id]) location.hash = HASH_MAP[id];
+  else history.replaceState(null, '', location.pathname + location.search);
 }
 
 
