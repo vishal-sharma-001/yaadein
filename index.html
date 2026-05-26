@@ -10,17 +10,18 @@
 
 <!-- Title & Description -->
 <title>Yaadein | Guest Photo Sharing for Indian Weddings</title>
-<meta name="description" content="Yaadein collects every candid, every dance, every tear from every wedding guest into one live shared album. No app. No login. One QR code. Built for Indian weddings.">
+<meta name="description" content="Yaadein collects every photo, every dance, every tear from every wedding guest into one live shared album. No app. No login. One QR code. Built for Indian weddings.">
 <meta name="keywords" content="wedding guest photo sharing, Indian wedding app, shaadi photo album, QR code wedding photos, wedding memories India, guest upload photos wedding">
 <meta name="author" content="Yaadein">
 <meta name="robots" content="index, follow">
+<meta name="theme-color" content="#080808">
 <link rel="canonical" href="https://theyaadein.com/">
 
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn previews) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theyaadein.com/">
 <meta property="og:title" content="Yaadein | Guest Photo Sharing for Indian Weddings">
-<meta property="og:description" content="Collect every candid from every guest. One QR code. No app. No login. Built for Indian weddings.">
+<meta property="og:description" content="Collect every photo from every guest. One QR code. No app. No login. Built for Indian weddings.">
 <meta property="og:image" content="https://theyaadein.com/images/hero-bg.jpg">
 <meta property="og:locale" content="en_IN">
 <meta property="og:site_name" content="Yaadein">
@@ -28,7 +29,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yaadein | Guest Photo Sharing for Indian Weddings">
-<meta name="twitter:description" content="Collect every candid from every guest. One QR code. No app. No login.">
+<meta name="twitter:description" content="Collect every photo from every guest. One QR code. No app. No login.">
 <meta name="twitter:image" content="https://theyaadein.com/images/hero-bg.jpg">
 
 <!-- Schema.org Structured Data -->
@@ -58,19 +59,23 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 button,.chip,[role="button"]{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.field input:focus-visible,.field select:focus-visible,.early-input:focus-visible,.bn:focus-visible,.tab:focus-visible,.chip:focus-visible,.gf:focus-visible,.sb:focus-visible{outline:none}
+.field input:focus-visible,.field select:focus-visible,.early-input:focus-visible{outline:2px solid var(--gold);outline-offset:0}
+.tab:focus-visible,.gf:focus-visible,.gsrc:focus-visible,.ap-src:focus-visible,.gg-src:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sb:focus-visible,.bn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 :root{
-  --bg:#080403;--bg2:#130c07;--bg3:#1e1209;
-  --gold:#c8954a;--glt:#e5bc80;--gdk:#7a5825;
-  --red:#8b1a1a;--cream:#f0e6d3;--c2:#b5a898;
-  --bdr:rgba(200,149,74,0.18);--nav:68px;--bnav:0px;
+  --bg:#080808;--bg2:#111111;--bg3:#1c1c1c;
+  --gold:#c8950a;--glt:#e0b030;--gdk:#7a5810;
+  --pink:rgba(255,182,200,0.12);--pinkbdr:rgba(255,160,185,0.22);
+  --red:#8b1a1a;--cream:#ffffff;--c2:#b8a898;
+  --bdr:rgba(200,149,10,0.2);--wbdr:rgba(255,255,255,0.08);--nav:68px;--dbar:48px;--bnav:0px;
   --red-bg:rgba(139,26,26,.12);--red-bdr:rgba(139,26,26,.25);
 }
 
@@ -85,16 +90,38 @@ body::after{
 .nav{
   position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:300;
   display:flex;align-items:center;justify-content:space-between;padding:0 48px;
-  background:rgba(8,4,3,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--bdr);
+  background:rgba(15,13,10,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--bdr);
 }
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.tabs{display:flex;gap:3px;background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:100px;padding:4px}
-.tab{padding:8px 22px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c2);background:none;border:none;border-radius:100px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
-.tab:hover{color:var(--cream)}
-.tab.on{background:var(--gold);color:#080403;font-weight:500}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;background:linear-gradient(120deg,#ffffff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.try-demo{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--c2);font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;padding:8px 22px;border-radius:100px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.try-demo:hover{border-color:var(--gold);color:var(--cream)}
+.nav-demo-tabs{display:none;align-items:center;gap:8px}
+.nav-demo-tabs.on{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.nav-demo-tabs.on .exit-demo{position:absolute;left:48px;pointer-events:auto}
+.nav-demo-tabs.on .demo-pill{pointer-events:auto}
+.exit-demo{display:flex;align-items:center;gap:5px;background:none;border:none;color:var(--c2);font-family:'DM Sans',sans-serif;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:color .2s;padding:6px 10px;white-space:nowrap}
+.exit-demo:hover{color:var(--cream)}
+.exit-demo svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;flex-shrink:0}
+.view-as-label{font-family:'DM Sans',sans-serif;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap;padding:0 6px 0 8px;user-select:none;pointer-events:none;align-self:center}
+.demo-pill{display:flex;gap:3px;background:rgba(255,255,255,.05);border:1px solid var(--wbdr);border-radius:100px;padding:4px}
+.tab{padding:7px 16px;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c2);background:none;border:none;border-radius:100px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;white-space:nowrap;opacity:.75}
+.tab:hover{color:var(--cream);opacity:1}
+.tab.on{background:var(--gold);color:#0f0d0a;font-weight:500;opacity:1}
+.nav-cta{display:inline-flex;align-items:center;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:var(--gold);color:#0f0d0a;border:none;cursor:pointer;padding:9px 22px;border-radius:100px;transition:all .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--glt)}
+.demo-next{display:flex;align-items:center;justify-content:space-between;padding:32px 48px;border-top:1px solid var(--bdr);background:var(--bg)}
+.demo-next-label{font-size:.72rem;color:var(--c2);font-weight:300}
+.demo-next-btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:none;border:1px solid var(--bdr);cursor:pointer;padding:10px 22px;transition:all .2s}
+.demo-next-btn:hover{border-color:var(--gold);background:rgba(200,149,10,.06)}
+.pcer{width:100%;margin-bottom:20px}
+.pcer-label{font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c2);margin-bottom:8px;text-align:center}
+.pcer-chips{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.pcer-chip{padding:6px 14px;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg2);border:1px solid var(--wbdr);color:var(--c2);border-radius:100px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.pcer-chip.on{border-color:var(--gold);color:var(--gold);background:rgba(200,149,10,.08)}
 
 /* SCREENS */
 .screen{position:fixed;top:var(--nav);left:0;right:0;bottom:var(--bnav);overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .25s ease}
+#s2,#s3,#s4{top:var(--nav)}
 .screen.on{opacity:1;pointer-events:auto}
 .screen::-webkit-scrollbar{width:3px}
 .screen::-webkit-scrollbar-track{background:var(--bg)}
@@ -106,20 +133,20 @@ body::after{
 .sl{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:16px;margin-bottom:52px}
 .sl::after{content:'';flex:1;height:1px;background:var(--bdr)}
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:16px 36px;border:none;cursor:pointer;transition:all .22s}
-.bg{background:var(--gold);color:#080403}.bg:hover{background:var(--glt)}
-.bo{background:transparent;color:var(--cream);border:1px solid var(--bdr)}.bo:hover{border-color:var(--gold);color:var(--gold)}
+.bg{background:var(--gold);color:#0f0d0a}.bg:hover{background:var(--glt)}
+.bo{background:transparent;color:var(--c2);border:1px solid rgba(255,255,255,.15);font-weight:400}.bo:hover{border-color:var(--gold);color:var(--cream)}
 
 /* ── S1 HERO ── */
 .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
-.hbg{position:absolute;inset:0;background:url('images/hero-bg.jpg') center/cover no-repeat;filter:sepia(.4) brightness(.35) saturate(1.2)}
-.hgrad{position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,4,3,.97) 0%,rgba(8,4,3,.72) 52%,rgba(139,26,26,.15) 100%)}
+.hbg{position:absolute;inset:0;background:url('images/hero-bg.webp') center/cover no-repeat;background:image-set(url('images/hero-bg.webp') type('image/webp'),url('images/hero-bg.jpg') type('image/jpeg')) center/cover no-repeat;filter:sepia(.4) brightness(.35) saturate(1.2)}
+.hgrad{position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.58) 50%,rgba(0,0,0,.08) 100%)}
 .hcontent{position:relative;padding:80px;max-width:800px}
-.hcontent h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,6.2vw,6.2rem);font-weight:300;line-height:1;margin:22px 0 26px}
+.hcontent h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,3.4vw,3.8rem);font-weight:300;line-height:1.1;margin:22px 0 26px}
 .hcontent h1 em{font-style:italic;background:linear-gradient(135deg,var(--glt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hcontent p{font-size:1rem;font-weight:300;color:var(--c2);line-height:1.75;max-width:470px;margin-bottom:40px}
 .hbtns{display:flex;gap:12px;flex-wrap:wrap}
 
-.hstrip{position:absolute;right:0;top:0;bottom:0;width:380px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:4px;opacity:.65}
+.hstrip{position:absolute;right:0;top:0;bottom:0;width:380px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:4px;opacity:.75}
 .hstrip-img{overflow:hidden}
 .hstrip-img:nth-child(1){grid-row:span 2}
 .hstrip-img:nth-child(4){grid-row:span 2}
@@ -127,12 +154,14 @@ body::after{
 
 /* ── S1 HOW ── */
 .how{padding:96px 80px;background:var(--bg2)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.step{background:var(--bg3);padding:48px 40px;position:relative;overflow:hidden;transition:background .3s}
-.step:hover{background:rgba(200,149,74,.06)}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.step{background:var(--bg2);padding:48px 40px;position:relative;overflow:hidden;transition:background .3s;border:1px solid var(--wbdr)}
+.step:hover{background:rgba(212,168,67,.06)}
+.step::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--gold),transparent);transform:scaleY(0);transition:transform .35s ease;transform-origin:center}
+.step:hover::before{transform:scaleY(1)}
 .step::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
 .step:hover::after{opacity:1}
-.snum{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:300;color:rgba(200,149,74,.12);line-height:1;margin-bottom:20px}
+.snum{font-family:'DM Sans',sans-serif;font-size:8rem;font-weight:200;color:rgba(200,149,10,.18);line-height:1;margin-bottom:8px;letter-spacing:-.04em}
 .stitle{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400;margin-bottom:13px;line-height:1.2}
 .sdesc{font-size:.88rem;line-height:1.75;color:var(--c2);font-weight:300}
 .step-link{display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;transition:gap .2s}
@@ -140,46 +169,60 @@ body::after{
 
 
 /* ── S1 TIRED ── */
-.tired{padding:96px 80px;background:var(--bg2)}
-.tired-tag{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.tired{padding:96px 80px;background:var(--pink);border-top:1px solid var(--pinkbdr);border-bottom:1px solid var(--pinkbdr)}
+.tired-before{border-left:2px solid rgba(255,255,255,0.12);padding:16px 24px;margin-bottom:48px;max-width:560px}
+.tired-before-label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px}
+.tired-before-text{font-size:.95rem;color:rgba(255,255,255,0.38);font-weight:300;line-height:1.75}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:56px}
+.stat-block{padding:40px 36px;background:rgba(0,0,0,.18);border:1px solid var(--pinkbdr)}
+.stat-num{font-family:'DM Sans',sans-serif;font-size:clamp(4rem,8vw,7rem);font-weight:200;line-height:1;color:var(--cream);margin-bottom:12px;letter-spacing:-.03em}
+.stat-block:nth-child(2) .stat-num{color:rgba(255,255,255,.4)}
+.stat-block:nth-child(3) .stat-num{background:linear-gradient(135deg,var(--glt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:.82rem;line-height:1.65;color:var(--c2);font-weight:300;max-width:180px}
 .tired-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:300;line-height:1.1;margin-bottom:28px}
 .tired-h em{font-style:italic;background:linear-gradient(135deg,var(--glt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .tired-sub{font-size:1.05rem;font-weight:300;color:var(--c2);line-height:1.8;max-width:620px;margin-bottom:52px}
 .tired-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:52px}
-.tired-pill{padding:12px 22px;background:var(--red-bg);border:1px solid var(--red-bdr);color:var(--c2);font-size:.85rem;font-style:italic;border-radius:2px}
+.tired-pill{padding:12px 22px;background:rgba(255,182,200,.07);border:1px solid var(--pinkbdr);color:var(--c2);font-size:.85rem;border-radius:2px;transition:all .2s;cursor:default}
+.tired-pill:hover{border-color:rgba(255,160,185,.5);color:var(--cream);background:rgba(255,182,200,.14)}
 .tired-cta-text{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--cream);border-left:3px solid var(--gold);padding-left:24px;max-width:600px;line-height:1.5}
+.tired-cta-text em{font-style:italic;background:linear-gradient(135deg,var(--glt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* ── COMPARE TABLE ── */
-.compare{margin-bottom:52px;border:1px solid var(--bdr);border-radius:2px;overflow:hidden}
-.compare-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--bdr)}
-.compare-row:last-child{border-bottom:none}
-.compare-row div{padding:18px 24px;font-size:.88rem;line-height:1.6;color:var(--c2);display:flex;align-items:center;gap:10px}
-.compare-row div:first-child{border-right:1px solid var(--bdr);background:rgba(139,26,26,.05)}
-.compare-row div:last-child{background:rgba(200,149,74,.04)}
-.compare-head{background:var(--bg3)!important}
-.compare-head div{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;padding:14px 24px!important;background:var(--bg3)!important}
-.cx{color:#8b3a3a;font-size:.9rem;flex-shrink:0;font-style:normal}
-.ck{color:#4ade80;font-size:.9rem;flex-shrink:0;font-style:normal}
-
-/* ── S1 MEMORY QUOTE ── */
-.memory{padding:80px;background:var(--bg);display:flex;justify-content:center}
-.memory-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--cream);max-width:700px;text-align:center;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:52px 0}
 
 /* ── S1 CTA ── */
 .lcta{padding:96px 80px;background:var(--bg2);border-top:1px solid var(--bdr);display:flex;align-items:flex-start;justify-content:space-between;gap:80px}
-.lcta h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.1}
+.lcta h2{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;line-height:1.05}
 .lcta h2 em{font-style:italic;color:var(--gold)}
 .lcta p{color:var(--c2);font-size:.9rem;font-weight:300;margin-top:12px;max-width:320px}
 .early-form{display:flex;gap:8px;margin-top:0;flex-shrink:0}
-.early-input{background:var(--bg3);border:1px solid var(--bdr);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:.92rem;padding:16px 20px;outline:none;transition:border-color .2s;width:260px}
+.lcta-left{flex:1;max-width:440px}
+.lcta-right{flex:0 0 auto;width:380px}
+.early-row{display:flex;gap:8px;margin-top:0}
+.cdd{position:relative;margin-bottom:10px;user-select:none}
+.cdd-btn{width:100%;background:var(--bg3);border:1px solid var(--bdr);color:var(--c2);font-family:'DM Sans',sans-serif;font-size:.92rem;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:border-color .2s;text-align:left}
+.cdd-btn:hover,.cdd.open .cdd-btn{border-color:var(--gold);color:var(--cream)}
+.cdd-btn svg{flex-shrink:0;transition:transform .2s;color:var(--c2)}
+.cdd.open .cdd-btn svg{transform:rotate(180deg)}
+.cdd-list{position:absolute;top:calc(100% + 2px);left:0;right:0;background:var(--bg3);border:1px solid var(--gold);z-index:99;display:none}
+.cdd.open .cdd-list{display:block}
+.cdd-opt{padding:14px 20px;font-size:.88rem;color:var(--c2);cursor:pointer;transition:background .15s,color .15s;font-family:'DM Sans',sans-serif}
+.cdd-opt:hover{background:rgba(200,149,10,.1);color:var(--cream)}
+.cdd-opt.selected{color:var(--gold)}
+.demo-link{background:none;border:none;color:var(--c2);font-family:'DM Sans',sans-serif;font-size:.8rem;cursor:pointer;padding:14px 0 0;display:flex;align-items:center;gap:6px;transition:color .2s}
+.demo-link:hover{color:var(--gold)}
+.founder-note{margin-top:24px;padding:20px 24px;border-left:2px solid var(--bdr);max-width:360px}
+.founder-note p{font-size:.82rem;line-height:1.8;color:var(--c2);font-weight:300}
+.founder-sig{display:block;margin-top:10px;font-size:.75rem;color:var(--gold);letter-spacing:.06em}
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;padding:14px 20px;background:var(--bg2);border-top:1px solid var(--bdr);z-index:200;gap:12px;align-items:center;justify-content:space-between}
+.sticky-cta p{font-size:.8rem;color:var(--c2);margin:0}
+@media(max-width:600px){.sticky-cta{display:flex}}
+.early-input{background:var(--bg3);border:1px solid var(--bdr);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:.92rem;padding:16px 20px;outline:none;transition:border-color .2s;width:260px;-webkit-appearance:none;appearance:none}
 .early-input:focus{border-color:var(--gold)}
-.early-input::placeholder{color:rgba(240,230,211,.25)}
+.early-input::placeholder{color:rgba(245,240,232,.25)}
+select.early-input{cursor:pointer;color:var(--c2)}
+select.early-input:valid{color:var(--cream)}
 .early-note{font-size:.76rem;color:var(--gold);margin-top:12px;min-height:20px}
 
-/* ── PREVIEW BAR ── */
-.preview-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 48px;background:rgba(200,149,74,.08);border-bottom:1px solid rgba(200,149,74,.2);font-size:.78rem;color:var(--c2);flex-wrap:wrap}
-.preview-cta{background:none;border:1px solid var(--gold);color:var(--gold);font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;cursor:pointer;transition:all .2s;flex-shrink:0}
-.preview-cta:hover{background:var(--gold);color:#080403}
 
 /* ── S2 CREATE ── */
 #s2{background:var(--bg)}
@@ -195,7 +238,7 @@ body::after{
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}
 .chip{padding:10px 12px;background:var(--bg2);border:1px solid var(--bdr);color:var(--c2);font-size:.76rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;user-select:none}
-.chip.on{border-color:var(--gold);color:var(--gold);background:rgba(200,149,74,.07)}
+.chip.on{border-color:var(--gold);color:var(--gold);background:rgba(212,168,67,.07)}
 .cdot{width:6px;height:6px;border-radius:50%;border:1px solid currentColor;flex-shrink:0}
 .chip.on .cdot{background:var(--gold)}
 
@@ -214,44 +257,47 @@ body::after{
 .cinfo strong{color:var(--gold);font-weight:400;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;display:block;margin-bottom:8px}
 
 /* ── S3 GUEST ── */
-#s3{background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:52px 40px 80px;gap:0}
+#s3{background:var(--bg)}
+.s3-body{display:flex;flex-direction:column;align-items:center;padding:52px 40px 0}
 .gintro{text-align:center;margin-bottom:44px;max-width:440px}
 .gintro h2{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:300;margin:10px 0 8px}
 .gintro p{color:var(--c2);font-size:.86rem;font-weight:300}
 
-.phone{width:375px;background:#08050a;border-radius:48px;border:1.5px solid rgba(200,149,74,.2);box-shadow:0 0 0 8px #120c0a,0 0 0 9px rgba(200,149,74,.08),0 50px 90px rgba(0,0,0,.9);overflow:hidden;position:relative;flex-shrink:0}
-.pnotch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:96px;height:26px;background:#08050a;border-radius:0 0 14px 14px;border:1.5px solid rgba(200,149,74,.1);border-top:none;z-index:5}
+.phone{width:375px;background:#08050a;border-radius:48px;border:1.5px solid rgba(212,168,67,.2);box-shadow:0 0 0 8px #120c0a,0 0 0 9px rgba(212,168,67,.08),0 50px 90px rgba(0,0,0,.9);overflow:hidden;position:relative;flex-shrink:0}
+.pnotch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:96px;height:26px;background:#08050a;border-radius:0 0 14px 14px;border:1.5px solid rgba(212,168,67,.1);border-top:none;z-index:5}
 .phero{position:relative;height:250px;overflow:hidden}
 .phero img{width:100%;height:100%;object-fit:cover;filter:sepia(.3) saturate(1.3) brightness(.55)}
-.phero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,4,3,.2) 0%,rgba(8,4,3,.88) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:22px;text-align:center}
-.ppill{font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(200,149,74,.15);border:1px solid rgba(200,149,74,.25);padding:5px 12px;border-radius:100px;margin-bottom:10px}
+.phero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,.88) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:22px;text-align:center}
+.ppill{font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.25);padding:5px 12px;border-radius:100px;margin-bottom:10px}
 .pcname{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;line-height:1.1}
 .pcname em{font-style:italic;color:var(--glt)}
 
 .pbody{padding:26px 22px 32px;background:var(--bg);display:flex;flex-direction:column;align-items:center}
 .pcounter{text-align:center;margin-bottom:36px}
-.cn{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.2}
+.cn{font-family:'DM Sans',sans-serif;font-size:2.8rem;font-weight:200;line-height:1.2;letter-spacing:-.03em}
 .cl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c2);margin-top:8px}
 
 .uwrap{position:relative;margin-bottom:20px}
-.uglow{position:absolute;inset:-24px;border-radius:50%;background:radial-gradient(circle,rgba(200,149,74,.15) 0%,transparent 70%);animation:ug 2.5s ease-in-out infinite}
+.uglow{position:absolute;inset:-24px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.15) 0%,transparent 70%);animation:ug 2.5s ease-in-out infinite}
 @keyframes ug{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
-.ubtn{width:130px;height:130px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;position:relative;box-shadow:0 14px 44px rgba(200,149,74,.3);transition:transform .17s}
+.ubtn{width:130px;height:130px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;position:relative;box-shadow:0 14px 44px rgba(200,149,10,.3);transition:transform .17s}
 .ubtn:hover{transform:scale(1.05)}.ubtn:active{transform:scale(.93)}
-.ubtn span{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#080403;font-weight:600}
+.ubtn span{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#0f0d0a;font-weight:600}
 
 .phint{font-size:.66rem;color:var(--c2);text-align:center;margin-bottom:20px}
 .recents{width:100%;margin-bottom:18px}
-.rlabel{font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c2);text-align:center;margin-bottom:8px}
+.rlabel-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.rlabel{font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c2)}
 .rrow{display:flex;gap:5px;justify-content:center}
 .rimg{width:64px;height:64px;border-radius:7px;object-fit:cover;filter:sepia(.2) saturate(1.2) brightness(.9)}
-.pnbox{width:100%;background:rgba(200,149,74,.06);border:1px solid rgba(200,149,74,.13);padding:13px 16px;text-align:center;border-radius:5px}
-.pnbox .pt{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c2)}
-.pnbox .ps{font-size:.78rem;color:var(--gold);margin-top:3px}
+.pnbox{width:100%;background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.13);padding:13px 16px;text-align:center;border-radius:5px}
+.pninput{width:100%;background:none;border:none;outline:none;text-align:center;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--cream);margin-bottom:4px}
+.pninput::placeholder{color:var(--c2)}
+.pnbox .ps{font-size:.72rem;color:var(--gdk);margin-top:2px}
 
 /* ── S4 GALLERY ── */
 #s4{background:var(--bg)}
-.gtop{position:sticky;top:0;background:rgba(8,4,3,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--bdr);padding:18px 48px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.gtop{position:sticky;top:0;background:rgba(15,13,10,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--bdr);padding:18px 48px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .gtitle h2{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;margin-bottom:6px}
 .gmrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .lpill{display:inline-flex;align-items:center;gap:6px;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#4ade80;background:rgba(74,222,128,.09);border:1px solid rgba(74,222,128,.2);padding:5px 12px;border-radius:100px}
@@ -263,25 +309,52 @@ body::after{
 .gfilts{display:flex;gap:4px;padding:14px 48px;border-bottom:1px solid var(--bdr);flex-wrap:wrap}
 .gf{padding:7px 18px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid var(--bdr);color:var(--c2);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
 .gf:hover{border-color:var(--gold);color:var(--cream)}
-.gf.on{background:var(--gold);border-color:var(--gold);color:#080403;font-weight:500}
+.gf.on{background:var(--gold);border-color:var(--gold);color:#0f0d0a;font-weight:500}
 
-.masonry{padding:10px 48px 60px;columns:4;column-gap:7px}
-.gi{break-inside:avoid;margin-bottom:7px;position:relative;cursor:pointer;overflow:hidden;animation:gfade .4s ease both}
+/* source toggle */
+.gfilts-source{border-bottom:1px solid var(--bdr);background:var(--bg2)}
+.gsrc{padding:12px 28px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;color:var(--c2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-bottom:-1px}
+.gsrc:hover{color:var(--cream)}
+.gsrc.on{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* guest grid */
+.masonry{padding:10px 48px 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.gi{position:relative;cursor:pointer;overflow:hidden;aspect-ratio:4/3;opacity:0;transition:opacity .35s ease,transform .35s ease;transform:translateY(8px)}
+.gi.gi-in{opacity:1;transform:none}
+
+/* photographer full-width grid */
+.pro-grid-full{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:10px 48px 60px}
+.pro-gi{position:relative;cursor:pointer;overflow:hidden;aspect-ratio:4/3;background:var(--bg3);opacity:0;transition:opacity .35s ease,transform .35s ease;transform:translateY(8px)}
+.pro-gi.gi-in{opacity:1;transform:none}
+.pro-gi img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(1.3) brightness(1.1) contrast(1.05);transition:transform .5s ease,filter .35s}
+.pro-gi:hover img{transform:scale(1.03);filter:saturate(1.4) brightness(1.05)}
+.pro-gi .gov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,transparent 55%);opacity:0;transition:opacity .28s;display:flex;align-items:flex-end;padding:16px}
+.pro-gi:hover .gov{opacity:1}
+.pro-gi .react-row{position:absolute;top:8px;right:8px;display:flex;gap:3px;opacity:0;transition:opacity .2s;z-index:5}
+.pro-gi:hover .react-row{opacity:1}
 @keyframes gfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.gi img{width:100%;display:block;filter:sepia(.15) saturate(1.25) brightness(.92) contrast(1.05);transition:transform .4s ease,filter .3s}
+.gi picture,.pro-gi picture,.ap-item picture,.gg-item picture,.hstrip-img picture,.ph-thumb picture,.phero picture,.reel-collage picture{display:block;width:100%;height:100%}
+.gi img{width:100%;height:100%;display:block;object-fit:cover;filter:sepia(.15) saturate(1.25) brightness(.92) contrast(1.05);transition:transform .4s ease,filter .3s}
 .gi:hover img{transform:scale(1.04);filter:sepia(.05) saturate(1.4) brightness(1)}
-.gov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,4,3,.85) 0%,transparent 55%);opacity:0;transition:opacity .28s;display:flex;align-items:flex-end;padding:14px}
+.gov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,transparent 55%);opacity:0;transition:opacity .28s;display:flex;align-items:flex-end;padding:14px}
 .gi:hover .gov{opacity:1}
 .govn{color:var(--cream);font-size:.78rem;font-weight:500}
 .govs{color:var(--c2);font-size:.64rem;margin-top:2px}
 
-.toast{position:fixed;bottom:calc(30px + var(--bnav));left:50%;transform:translateX(-50%) translateY(calc(120px + var(--bnav)));background:var(--bg3);border:1px solid var(--bdr);padding:12px 26px;display:flex;align-items:center;gap:12px;font-size:.8rem;white-space:nowrap;z-index:1000;pointer-events:none;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
-.toast.show{transform:translateX(-50%) translateY(0)}
-.tdot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0}
+/* live notification banner */
+.gnot{display:flex;align-items:center;justify-content:center;gap:8px;height:0;overflow:hidden;background:rgba(74,222,128,.05);border-bottom:1px solid rgba(74,222,128,.12);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;opacity:0;transition:height .35s ease,opacity .3s}
+.gnot.show{height:32px;opacity:1}
+.gnot-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:ld 1.5s ease infinite;flex-shrink:0}
+
+/* photographer badge */
+.gi-pro{position:absolute;top:8px;left:8px;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(200,149,10,.88);color:#0f0d0a;padding:3px 8px;border-radius:100px;font-weight:600;pointer-events:none;backdrop-filter:blur(4px)}
+
+/* source filter separator */
+.gf-sep{width:1px;height:18px;background:var(--bdr);margin:0 4px;align-self:center}
 
 /* ── FOOTER ── */
 .footer{padding:52px 80px;background:var(--bg);border-top:1px solid var(--bdr);display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.footer-brand .logo{font-size:1.1rem;margin-bottom:6px}
+.footer-brand .logo{font-size:1.1rem;margin-bottom:6px;letter-spacing:.18em}
 .footer-tag{font-size:.78rem;color:var(--c2);font-weight:300}
 .footer-right{text-align:right}
 .footer-nav{display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap}
@@ -289,10 +362,167 @@ body::after{
 .footer-nav a:hover{color:var(--gold)}
 .footer-contact{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:color .2s;display:inline-block;margin-bottom:12px}
 .footer-contact:hover{color:var(--glt)}
-.footer-copy{font-size:.64rem;color:var(--gdk);letter-spacing:.06em}
+.footer-copy{font-size:.64rem;color:var(--c2);letter-spacing:.06em}
+
+/* ── HERO BADGE ── */
+.hbadge{display:inline-flex;align-items:center;gap:8px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c2);background:rgba(212,168,67,.07);border:1px solid var(--bdr);padding:7px 16px;border-radius:100px;margin-bottom:22px}
+.hbadge-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:ld 1.5s ease infinite;flex-shrink:0}
+
+/* ── S1 SECTION ORDER ── */
+#s1{display:flex;flex-direction:column}
+.hero{order:1}.tired{order:2}.how{order:3}.for-whom{order:4}.ftrs{order:5}.lcta{order:6}.footer{order:7}
+
+/* ── FEATURES GRID ── */
+.ftrs{padding:96px 80px;background:var(--bg2)}
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:0}
+.fcard{background:var(--bg2);padding:32px 28px;position:relative;overflow:hidden;transition:all .3s;border:1px solid var(--wbdr)}
+.fcard:hover{background:rgba(200,149,10,.06);border-left-color:var(--gold)}
+.fcard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.fcard:hover::before{opacity:1}
+.fcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.fcard:hover::after{opacity:1}
+.fcard-icon{width:46px;height:46px;margin-bottom:20px;color:var(--gold);background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fcard-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
+.fcard-title{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:400;margin-bottom:8px;color:var(--cream)}
+.fcard-desc{font-size:.82rem;line-height:1.7;color:var(--c2);font-weight:300}
+.fcard-soon{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c2);background:var(--bg3);border:1px solid var(--wbdr);padding:3px 8px;vertical-align:middle;margin-left:6px;font-family:'DM Sans',sans-serif;font-weight:400}
+
+/* ── FOR WHOM ── */
+.for-whom{padding:96px 80px;background:var(--bg3)}
+.fwgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.fwcard{background:var(--bg2);padding:48px 40px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;transition:background .3s;border:1px solid var(--wbdr);border-top:3px solid var(--gold)}
+.fwcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.fwcard:hover{background:rgba(200,149,10,.05)}
+.fwcard:hover::after{opacity:1}
+.fwey{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.fwt{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;line-height:1.2;color:var(--cream)}
+.fwt em{font-style:italic;background:linear-gradient(135deg,var(--glt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.fwcard:first-child{border-top-color:var(--gold)}
+.fwcard:last-child{border-top-color:var(--gold)}
+.fwd{font-size:.86rem;line-height:1.75;color:var(--c2);font-weight:300;flex:1}
+.fwcard .btn{align-self:flex-start;margin-top:8px}
+
+/* ── SHARED SUB-NAV ── */
+.s2-anchors,.s3-anchors{position:sticky;top:0;z-index:10;display:flex;gap:0;background:rgba(15,13,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr)}
+.s2-anchor,.s3-anchor{padding:14px 32px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c2);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.s2-anchor:hover,.s3-anchor:hover{color:var(--cream)}
+.s2-anchor.on,.s3-anchor.on{color:var(--gold);border-bottom-color:var(--gold)}
+.s2-section-head{padding:64px 80px 0;background:var(--bg)}
+.s2-section-head.dark{background:var(--bg2)}
+#s2 .sl{margin-bottom:52px}
+.ph-link-box{background:var(--bg3);border:1px solid var(--bdr);padding:18px 20px;margin-top:8px}
+.ph-link-box strong{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px}
+.ph-link-row{display:flex;gap:6px;align-items:center}
+.ph-link-url{flex:1;background:var(--bg);border:1px solid var(--bdr);padding:10px 14px;font-size:.76rem;color:var(--gold);word-break:break-all}
+.ph-link-copy{padding:10px 16px;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--bdr);background:transparent;color:var(--c2);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.ph-link-copy:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── S5 PHOTOGRAPHER VIEW ── */
+#s5{background:var(--bg)}
+.phwrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - var(--nav) - var(--bnav))}
+.phform{padding:48px 64px;border-right:1px solid var(--bdr);display:flex;flex-direction:column}
+.phform h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;line-height:1.1;margin:14px 0 10px}
+.phform .sub{color:var(--c2);font-size:.9rem;font-weight:300;margin-bottom:36px;line-height:1.7}
+.ph-drop{border:1px dashed rgba(212,168,67,.3);padding:44px 24px;text-align:center;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:24px}
+.ph-drop:hover{border-color:var(--gold);background:rgba(212,168,67,.03)}
+.ph-drop svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.4}
+.ph-drop p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--cream);line-height:1.3}
+.ph-drop span{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c2)}
+.ph-upload-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.ph-upload-count{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ph-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;flex:1;align-content:start}
+.ph-thumb{aspect-ratio:1;overflow:hidden;cursor:pointer;position:relative}
+.ph-thumb img{width:100%;height:100%;object-fit:cover;filter:sepia(.06) saturate(1.5) brightness(.95) contrast(1.1);transition:transform .3s,filter .2s}
+.ph-thumb:hover img{transform:scale(1.08);filter:sepia(0) saturate(1.6) brightness(1)}
+.ph-thumb-new{border:1px dashed rgba(212,168,67,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s;background:var(--bg2)}
+.ph-thumb-new:hover{border-color:var(--gold)}
+.ph-thumb-new svg{width:16px;height:16px;stroke:var(--gdk);fill:none;stroke-width:1.8}
+.ph-drop-small{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px dashed rgba(212,168,67,.18);margin-top:6px;cursor:pointer;transition:border-color .2s}
+.ph-drop-small:hover{border-color:rgba(212,168,67,.4)}
+.ph-drop-small span{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c2);opacity:.6}
+
+.phstatus{padding:64px;background:var(--bg2);display:flex;flex-direction:column;gap:8px;overflow-y:auto}
+.phcard{background:var(--bg3);border:1px solid var(--bdr);padding:28px 32px}
+.phcard-label{font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.phcard-name{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:300;line-height:1.1;margin-bottom:5px}
+.phcard-date{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c2)}
+.ph-big{font-family:'DM Sans',sans-serif;font-size:3.5rem;font-weight:200;color:var(--cream);line-height:1;margin-bottom:2px;letter-spacing:-.03em}
+.ph-big-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c2);margin-bottom:20px}
+.ph-cer-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bdr);font-size:.8rem;color:var(--c2)}
+.ph-cer-row:last-child{border-bottom:none;padding-bottom:0}
+.ph-cer-n{color:var(--cream);font-weight:400}
+.phtotal{background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.16);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.phtotal-num{font-family:'DM Sans',sans-serif;font-size:2.4rem;font-weight:200;color:var(--cream);line-height:1;letter-spacing:-.02em}
+.phtotal-label{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.phtotal-breakdown{font-size:.78rem;color:var(--c2);line-height:1.7;text-align:right}
+.ph-actions{display:flex;flex-direction:column;gap:8px}
+
+/* ── PHOTOGRAPHER UPLOAD ── */
+.phup-tabs{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:14px}
+.phup-tab{padding:10px;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;background:var(--bg2);border:1px solid var(--bdr);color:var(--c2);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;text-align:center}
+.phup-tab.on{background:var(--gold);border-color:var(--gold);color:#0f0d0a;font-weight:500}
+.phup-zone{border:1px dashed rgba(212,168,67,.3);padding:40px 20px;text-align:center;display:none;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s}
+.phup-zone:hover{border-color:var(--gold)}
+.phup-zone.on{display:flex}
+.phup-zone svg{width:32px;height:32px;stroke:var(--gold);fill:none;stroke-width:1.4}
+.phup-zone p{font-size:.82rem;color:var(--c2);line-height:1.6}
+.phup-zone span{font-size:.64rem;color:var(--gdk);letter-spacing:.08em;text-transform:uppercase}
+
+
+/* ── AI MODALS ── */
+.amodal{position:fixed;inset:0;background:rgba(15,13,10,.97);z-index:500;display:none;align-items:center;justify-content:center;flex-direction:column;gap:20px;padding:40px;text-align:center}
+.amodal.on{display:flex}
+.amodal-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--c2);font-size:1.4rem;cursor:pointer;line-height:1;font-family:'DM Sans',sans-serif}
+
+/* video gallery card */
+.gi-vid video{width:100%;height:100%;display:block;object-fit:cover;filter:sepia(.1) saturate(1.2) brightness(.88)}
+.gi-vid:hover video{filter:sepia(.02) saturate(1.3) brightness(1)}
+.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(200,149,10,.85);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:transform .2s,background .2s;backdrop-filter:blur(4px)}
+.gi-vid:hover .vid-play{transform:translate(-50%,-50%) scale(1.12);background:var(--gold)}
+.vid-play svg{width:18px;height:18px;fill:#fff;margin-left:3px}
+.vid-dur{position:absolute;bottom:8px;left:10px;font-size:.6rem;letter-spacing:.08em;background:rgba(0,0,0,.65);color:var(--cream);padding:2px 7px;border-radius:100px;backdrop-filter:blur(4px)}
+
+/* video player modal */
+
+/* photo lightbox */
+#photoModal{background:rgba(4,2,1,.96);cursor:default;padding:0;gap:0;justify-content:center;align-items:center}
+.lb-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.lb-img-box{position:relative;display:inline-flex;max-width:min(1000px,90vw);max-height:90vh}
+.lb-img-box img{max-width:min(1000px,90vw);max-height:90vh;object-fit:contain;filter:sepia(.06) saturate(1.25) brightness(.96);display:block;user-select:none}
+.lb-info{position:absolute;bottom:0;left:0;right:0;padding:32px 22px 18px;background:linear-gradient(to top,rgba(4,2,1,.9) 0%,transparent 100%);pointer-events:none}
+.lb-info-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--cream);line-height:1.2}
+.lb-info-sub{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(15,13,10,.7);border:1px solid var(--bdr);color:var(--c2);width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;backdrop-filter:blur(8px);border-radius:0;z-index:10}
+.lb-arrow:hover{border-color:var(--gold);color:var(--gold);background:rgba(15,13,10,.9)}
+.lb-arrow.prev{left:24px}.lb-arrow.next{right:24px}
+.lb-arrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.lb-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--c2);font-size:1.1rem;cursor:pointer;font-family:'DM Sans',sans-serif;width:36px;height:36px;display:flex;align-items:center;justify-content:center;transition:color .2s;z-index:10}
+.lb-close:hover{color:var(--cream)}
+.lb-counter{position:absolute;top:22px;left:50%;transform:translateX(-50%);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c2);pointer-events:none}
+.face-ring{width:160px;height:160px;border-radius:50%;border:1px solid rgba(212,168,67,.4);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.face-scan{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:fscan 1.8s ease-in-out infinite;box-shadow:0 0 12px var(--gold)}
+@keyframes fscan{0%{top:0%}100%{top:100%}}
+.face-ring svg{width:64px;height:64px;stroke:rgba(212,168,67,.3);fill:none;stroke-width:.8}
+.amodal h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300}
+.amodal p{font-size:.84rem;color:var(--c2);max-width:320px;line-height:1.7}
+.astatus{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.reel-wrap{width:100%;max-width:300px;aspect-ratio:9/16;background:var(--bg3);border:1px solid var(--bdr);position:relative;overflow:hidden}
+.reel-collage{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:2px;opacity:.5}
+.reel-collage img{width:100%;height:100%;object-fit:cover;filter:sepia(.3) saturate(1.2)}
+.reel-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.2) 60%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:28px;gap:6px}
+.reel-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300}
+.reel-sub{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.reel-play{width:50px;height:50px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-bottom:8px;flex-shrink:0}
+.reel-play svg{width:18px;height:18px;fill:#fff;margin-left:3px}
+
+/* Reactions */
+.react-row{position:absolute;top:8px;right:8px;display:flex;gap:3px;opacity:0;transition:opacity .2s;z-index:5}
+.gi:hover .react-row{opacity:1}
+.react-btn{background:rgba(0,0,0,.55);border:none;color:var(--cream);font-size:.72rem;padding:3px 7px;border-radius:100px;cursor:pointer;backdrop-filter:blur(6px);transition:transform .15s;line-height:1.4}
+.react-btn:hover{transform:scale(1.25)}
 
 /* ── BOTTOM NAV (mobile only) ── */
-.bnav{display:none;position:fixed;bottom:0;left:0;right:0;height:calc(58px + env(safe-area-inset-bottom, 0px));padding-bottom:env(safe-area-inset-bottom, 0px);background:rgba(8,4,3,.97);backdrop-filter:blur(14px);border-top:1px solid var(--bdr);z-index:300}
+.bnav{display:none;position:fixed;bottom:0;left:0;right:0;height:calc(58px + env(safe-area-inset-bottom, 0px));padding-bottom:env(safe-area-inset-bottom, 0px);background:rgba(15,13,10,.97);backdrop-filter:blur(14px);border-top:1px solid var(--bdr);z-index:300}
 .bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:none;border:none;cursor:pointer;color:var(--c2);transition:color .2s;font-family:'DM Sans',sans-serif;padding:0}
 .bn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;flex-shrink:0}
 .bn span{font-size:.5rem;letter-spacing:.08em;text-transform:uppercase}
@@ -300,10 +530,15 @@ body::after{
 
 /* ── RESPONSIVE ── */
 @media (max-width:860px){
-  .steps{grid-template-columns:1fr}
-  .masonry{columns:3}
+  .steps{grid-template-columns:1fr 1fr}
+  .masonry{grid-template-columns:repeat(3,1fr)}
+  .pro-grid-full{grid-template-columns:1fr 1fr;padding:8px 28px 40px}
   .hstrip{width:220px;opacity:.4}
-  .how,.tired{padding:72px 48px}
+  .how,.tired,.for-whom{padding:72px 48px}
+  .fgrid{grid-template-columns:repeat(2,1fr)}
+  .fwgrid{grid-template-columns:1fr}
+  .gactions{flex-wrap:wrap}
+  .nav-cta{padding:7px 16px;font-size:.66rem}
 }
 
 @media (max-width:640px){
@@ -311,6 +546,10 @@ body::after{
   :root{--bnav:58px}
   .nav{padding:0 20px}
   .tabs{display:none}
+  .nav-cta{display:none}
+  .nav-demo-tabs{display:none!important}
+  .demo-next-inner{padding:40px 24px;gap:24px;flex-direction:column;align-items:flex-start}
+  .demo-next-heading{font-size:2rem}
   .bnav{display:flex}
 
   /* Hero */
@@ -324,181 +563,404 @@ body::after{
   /* Sections */
   .how,.tired{padding:56px 24px}
   .step{padding:32px 24px}
-  .memory{padding:48px 24px}
   .tired-h{font-size:2.2rem}
   .tired-sub{font-size:.95rem}
-  .compare-row{grid-template-columns:1fr}
-  .compare-row div:first-child{border-right:none;border-bottom:1px solid var(--bdr)}
-  .compare-head div:last-child{display:none}
-  .compare-head div:first-child{letter-spacing:.15em}
+  .stat-row{grid-template-columns:1fr;gap:2px}
+  .stat-block{padding:28px 24px}
 
   /* CTA */
   .lcta{padding:56px 24px;flex-direction:column;gap:28px}
   .lcta h2{font-size:2.2rem}
+  .lcta-right{width:100%}
   .early-form{flex-direction:column}
+  .early-row{flex-direction:column}
   .early-input{width:100%}
 
   /* Footer */
   .footer{padding:40px 24px;flex-direction:column;align-items:flex-start;gap:24px}
   .footer-right{text-align:left}
 
-  /* Preview bar */
-  .preview-bar{padding:10px 20px}
-
   /* Create Event */
   .cwrap{grid-template-columns:1fr}
   .cform{padding:36px 20px;border-right:none;border-bottom:1px solid var(--bdr)}
   .cqr{padding:28px 20px}
+
+  /* Dashboard */
+  .s2-anchors{padding:0 4px}
+  .s2-anchor{padding:12px 18px;font-size:.62rem}
+  .s2-section-head{padding:48px 20px 0}
+  .phwrap{grid-template-columns:1fr}
+  .phform{padding:36px 20px;border-right:none;border-bottom:1px solid var(--bdr)}
+  .phstatus{padding:28px 20px}
+  .ph-grid{grid-template-columns:repeat(4,1fr)}
   .chips{grid-template-columns:1fr 1fr}
 
   /* Guest */
-  #s3{padding:36px 16px 60px}
+  .s3-body{padding:36px 16px 0}
   .phone{width:min(340px,100%)}
+
+  /* For whom */
+  .for-whom{padding:56px 24px}
+  .fwgrid{grid-template-columns:1fr}
+
+  /* Steps */
+  .steps{grid-template-columns:1fr}
+
+  /* Features */
+  .ftrs{padding:56px 24px}
+  .fgrid{grid-template-columns:1fr}
+  .fcard{padding:28px 22px}
 
   /* Gallery */
   .gtop{padding:14px 16px;flex-direction:column;align-items:flex-start;gap:10px}
-  .gactions{display:flex;gap:6px;width:100%}
-  .gactions .btn{flex:1;justify-content:center;padding:9px 10px;font-size:.65rem}
+  .gactions{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:100%}
+  .gactions .btn{justify-content:center;padding:9px 10px;font-size:.65rem}
   .gfilts{padding:10px 16px;gap:6px}
   .gf{padding:6px 13px;font-size:.62rem}
-  .masonry{columns:2;padding:8px 16px 60px;column-gap:5px}
+  .masonry{grid-template-columns:repeat(2,1fr);padding:8px 16px 60px;gap:5px}
+  .pro-grid-full{grid-template-columns:1fr;padding:8px 16px 40px}
+  .ap-section{padding:48px 20px}
+  .ap-grid{grid-template-columns:repeat(2,1fr)}
+  .ap-deliver{flex-direction:column;gap:16px}
+  .gg-section{padding:48px 20px}
+  .gg-grid{grid-template-columns:repeat(2,1fr)}
+  .gg-head{flex-direction:column;align-items:flex-start;gap:16px}
+  .demo-next{padding:28px 20px;flex-direction:column;align-items:flex-start;gap:16px}
 }
+
+/* ── AP SOURCE TABS (S2) ── */
+.ap-src-tabs{display:flex;gap:0;border-bottom:1px solid var(--bdr);margin-bottom:32px}
+.ap-src{padding:11px 26px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c2);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap}
+.ap-src:hover{color:var(--cream)}
+.ap-src.on{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── ALBUM PREVIEW (S2) ── */
+.ap-section{padding:72px 80px 0;background:var(--bg);border-top:1px solid var(--bdr)}
+.ap-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;gap:24px}
+.ap-desc{font-size:.84rem;color:var(--c2);font-weight:300;margin-top:8px;max-width:400px;line-height:1.7}
+.ap-count-block{text-align:right;flex-shrink:0}
+.ap-num{font-family:'DM Sans',sans-serif;font-size:4rem;font-weight:200;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--glt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ap-label{font-size:.7rem;color:var(--c2);letter-spacing:.06em;margin-top:6px}
+.ap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px;transition:opacity .2s}
+.ap-item{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:default}
+.ap-item img{width:100%;height:100%;object-fit:cover;filter:sepia(.1) saturate(1.2) brightness(.88);transition:transform .5s ease,filter .3s}
+.ap-item:hover img{transform:scale(1.05);filter:sepia(.02) saturate(1.4) brightness(1)}
+.ap-item-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%);opacity:0;transition:opacity .28s}
+.ap-item:hover .ap-item-ov{opacity:1}
+.ap-badge{position:absolute;top:8px;left:8px;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:100px;font-weight:600;backdrop-filter:blur(6px);pointer-events:none}
+.ap-badge.guest{background:rgba(255,255,255,.14);color:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.12)}
+.ap-badge.pro{background:rgba(200,149,10,.9);color:#0f0d0a}
+.ap-deliver{margin-top:2px;display:flex;align-items:center;justify-content:space-between;padding:36px 44px;background:linear-gradient(135deg,rgba(200,149,10,.07) 0%,rgba(200,149,10,.02) 100%);border:1px solid rgba(200,149,10,.18);gap:40px;position:relative;overflow:hidden}
+.ap-deliver::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
+.ap-deliver-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:6px;color:var(--cream)}
+.ap-deliver-sub{font-size:.82rem;color:var(--c2);font-weight:300;line-height:1.7;max-width:340px}
+
+/* ── GUEST GALLERY (S3) ── */
+.gg-section{padding:72px 80px;background:var(--bg2);border-top:1px solid var(--bdr)}
+.gg-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:44px;gap:24px}
+.gg-sub{font-size:.84rem;color:var(--c2);font-weight:300;margin-top:8px;line-height:1.6}
+.gg-face-btn{display:inline-flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);background:var(--bg3);border:1px solid var(--bdr);cursor:pointer;padding:14px 26px;transition:all .22s;flex-shrink:0;position:relative;overflow:hidden}
+.gg-face-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,149,10,.12),transparent);opacity:0;transition:opacity .3s}
+.gg-face-btn:hover::before{opacity:1}
+.gg-face-btn:hover{border-color:var(--gold);color:var(--gold)}
+.gg-face-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0;transition:stroke .22s}
+.gg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.gg-item{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer;opacity:0;transition:opacity .35s ease,transform .35s ease;transform:translateY(8px)}
+.gg-item.gi-in{opacity:1;transform:none}
+.gg-item img{width:100%;height:100%;object-fit:cover;filter:sepia(.15) saturate(1.25) brightness(.9);transition:transform .5s ease,filter .35s}
+.gg-item:hover img{transform:scale(1.05);filter:sepia(.04) saturate(1.4) brightness(1)}
+.gg-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,transparent 55%);opacity:0;transition:opacity .28s;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:8px}
+.gg-item:hover .gg-ov{opacity:1}
+.gg-reactions{display:flex;gap:5px}
+.gg-rbtn{background:rgba(0,0,0,.55);border:none;font-size:.78rem;padding:5px 9px;border-radius:100px;cursor:pointer;backdrop-filter:blur(8px);transition:transform .15s,background .15s;line-height:1.4;color:var(--cream)}
+.gg-rbtn:hover,.gg-rbtn.on{transform:scale(1.2);background:rgba(0,0,0,.8)}
+.gg-dl{position:absolute;top:10px;right:10px;width:32px;height:32px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .22s,background .2s,border-color .2s;backdrop-filter:blur(8px)}
+.gg-item:hover .gg-dl{opacity:1}
+.gg-dl svg{width:13px;height:13px;stroke:var(--cream);fill:none;stroke-width:2;transition:stroke .2s}
+.gg-dl:hover{background:var(--gold);border-color:var(--gold)}
+.gg-dl:hover svg{stroke:#0f0d0a}
+.gg-who{font-size:.58rem;color:rgba(255,255,255,.6);letter-spacing:.06em}
+
+/* ── DEMO BAR SLIDING INDICATOR ── */
+.demo-bar{position:relative}
+.db-label{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gdk);padding:0 20px 0 0;margin-right:8px;border-right:1px solid rgba(200,149,10,.15);white-space:nowrap;flex-shrink:0}
+.db-indicator{position:absolute;bottom:0;height:2px;background:linear-gradient(90deg,var(--gdk),var(--gold),var(--glt));transition:left .32s cubic-bezier(.4,0,.2,1),width .32s cubic-bezier(.4,0,.2,1);pointer-events:none;border-radius:1px 1px 0 0}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,.68,0,1.05),transform .7s cubic-bezier(.22,.68,0,1.05)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}
+.reveal-d2{transition-delay:.16s}
+.reveal-d3{transition-delay:.24s}
+.reveal-d4{transition-delay:.32s}
+
+/* ── PREMIUM DEMO-NEXT ── */
+.demo-next{position:relative;overflow:hidden;background:var(--bg2);border-top:1px solid var(--bdr)}
+.demo-next::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:320px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);pointer-events:none}
+.demo-next-inner{display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:52px 80px;position:relative;z-index:1;gap:40px}
+.demo-next-eyebrow{font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gdk);margin-bottom:10px}
+.demo-next-heading{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:14px}
+.demo-next-sub{font-size:.84rem;color:var(--c2);font-weight:300;max-width:400px;line-height:1.75}
+
+/* ── FIELD NOTE ── */
+.field-note{color:var(--c2);font-size:.54rem;letter-spacing:0;text-transform:none;font-weight:300;font-family:'DM Sans',sans-serif;margin-left:6px;opacity:.6}
+
+/* ── COUPLE NOTIF (S2) ── */
+.couple-notif{display:none;margin-top:8px;padding:16px 18px;background:rgba(200,149,10,.06);border:1px solid rgba(200,149,10,.18);font-size:.8rem;color:var(--c2);line-height:2}
+.couple-notif.on{display:block}
+.couple-notif strong{color:var(--gold);font-weight:400;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;display:block;margin-bottom:6px}
+.couple-email{color:var(--gold)}
+
+/* ── GUEST CONTRIBUTION (S4) ── */
+.gcontrib{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:5px}
+.gcontrib-item{font-size:.68rem;color:var(--c2)}
+.gcontrib-num{font-family:'DM Sans',sans-serif;color:var(--cream);font-weight:400}
+.gcontrib-dot{width:3px;height:3px;border-radius:50%;background:var(--gdk);flex-shrink:0}
+
+/* ── GG FILTERS (S3) ── */
+.gg-src-tabs{display:flex;gap:0;border-bottom:1px solid var(--bdr);margin-bottom:24px}
+.gg-src{padding:12px 28px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c2);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap}
+.gg-src:hover{color:var(--cream)}
+.gg-src.on{color:var(--gold);border-bottom-color:var(--gold)}
+.gg-filters{display:flex;gap:5px;margin-bottom:28px;flex-wrap:wrap}
+.gg-filt{padding:6px 16px;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid var(--bdr);color:var(--c2);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.gg-filt:hover{border-color:var(--gold);color:var(--cream)}
+.gg-filt.on{background:var(--gold);border-color:var(--gold);color:#0f0d0a;font-weight:500}
+
+/* ── MODERATION BUTTON (S4) ── */
+.mod-btn{position:absolute;bottom:8px;right:8px;width:26px;height:26px;background:rgba(139,26,26,.8);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .22s,background .2s;backdrop-filter:blur(6px);z-index:6}
+.gi:hover .mod-btn{opacity:1}
+.mod-btn:hover{background:rgba(200,50,50,.95)}
+.mod-btn svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5}
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <div class="logo">Yaadein</div>
-  <div class="tabs">
-    <button class="tab on" data-t="s1">How It Works</button>
-    <button class="tab" data-t="s2">Create Event</button>
-    <button class="tab" data-t="s3">Guest View</button>
-    <button class="tab" data-t="s4">Live Gallery</button>
+  <div class="logo" onclick="goTo('s1')" style="cursor:pointer">Yaadein</div>
+  <div id="navDefault">
+    <button class="try-demo" onclick="enterDemo()">Try Demo</button>
+  </div>
+  <div id="navDemoTabs" class="nav-demo-tabs">
+    <button class="exit-demo" onclick="goTo('s1')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Home
+    </button>
+    <div class="demo-pill">
+      <span class="view-as-label">View as</span>
+      <button class="tab" data-t="s2">Photographer</button>
+      <button class="tab" data-t="s3">Guest</button>
+      <button class="tab" data-t="s4">Couple</button>
+    </div>
   </div>
 </nav>
 
+
 <!-- ═══════════ S1: LANDING ═══════════ -->
-<div id="s1" class="screen on">
+<div id="s1" class="screen">
 
   <section class="hero">
     <div class="hbg"></div>
     <div class="hgrad"></div>
     <div class="hcontent">
-      <h1>Every guest<br>has a <em>moment</em><br>you missed.</h1>
-      <p class="hero-desc">Yaadein collects every candid, every dance, every tear from every guest into one live shared album. No app. No login. One QR code.</p>
+      <div class="hbadge"><span class="hbadge-dot"></span>For Indian Wedding Professionals · Early Access</div>
+      <h1>Every wedding has two albums.<br>Most couples only get <em>one.</em></h1>
+      <p class="hero-desc">After every wedding, hundreds of guest photos disappear into phones and are never shared. Yaadein captures every one and combines them with your edited shots into one private album. No app. No login. One QR code.</p>
       <div class="hbtns">
-        <button class="btn bg" data-sc="early">Get Early Access</button>
+        <button class="btn bg" data-sc="early">I want this</button>
         <button class="btn bo" data-sc="how">See how it works</button>
       </div>
     </div>
     <div class="hstrip">
-      <div class="hstrip-img"><img src="images/strip/1.jpg" alt="Indian wedding ceremony"></div>
-      <div class="hstrip-img"><img src="images/strip/2.jpg" alt="Haldi ceremony"></div>
-      <div class="hstrip-img"><img src="images/strip/3.jpg" alt="Sangeet dance celebration"></div>
-      <div class="hstrip-img"><img src="images/strip/4.jpg" alt="Indian bride"></div>
-      <div class="hstrip-img"><img src="images/strip/5.jpg" alt="Baraat procession"></div>
-      <div class="hstrip-img"><img src="images/strip/6.jpg" alt="Wedding reception"></div>
+      <div class="hstrip-img"><picture><source srcset="images/strip/1.webp" type="image/webp"><img src="images/strip/1.jpg" alt="Indian wedding ceremony"></picture></div>
+      <div class="hstrip-img"><picture><source srcset="images/strip/2.webp" type="image/webp"><img src="images/strip/2.jpg" alt="Haldi ceremony"></picture></div>
+      <div class="hstrip-img"><picture><source srcset="images/strip/3.webp" type="image/webp"><img src="images/strip/3.jpg" alt="Sangeet dance celebration"></picture></div>
+      <div class="hstrip-img"><picture><source srcset="images/strip/4.webp" type="image/webp"><img src="images/strip/4.jpg" alt="Indian bride"></picture></div>
+      <div class="hstrip-img"><picture><source srcset="images/strip/5.webp" type="image/webp"><img src="images/strip/5.jpg" alt="Baraat procession"></picture></div>
+      <div class="hstrip-img"><picture><source srcset="images/strip/6.webp" type="image/webp"><img src="images/strip/6.jpg" alt="Wedding reception"></picture></div>
     </div>
   </section>
 
   <section class="how" id="how">
-    <div class="sl">How it works</div>
+    <div class="sl reveal">How it works</div>
     <div class="steps">
-      <div class="step">
+      <div class="step reveal reveal-d1">
         <div class="snum">01</div>
         <div class="stitle">Create your event</div>
-        <p class="sdesc">Enter the couple names and wedding date. Pick your sub-events. You get a QR code and a private link instantly. Print it. WhatsApp it. Put it on the welcome table.</p>
+        <p class="sdesc">Enter the couple names and wedding date. Pick sub-events: Haldi, Sangeet, Mehendi, Baraat, Reception. A QR code and a private guest link are generated instantly. Print it, WhatsApp it, put it on the welcome table.</p>
         <button class="step-link" data-go="s2">Try it <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-d2">
         <div class="snum">02</div>
         <div class="stitle">Guests scan and upload</div>
-        <p class="sdesc">Any guest scans the QR code. The camera opens on their phone immediately. No app. No Google account. No login. They tap upload and their memory is in the album.</p>
+        <p class="sdesc">Any guest scans the QR code or receives a WhatsApp link. Camera opens immediately. No app. No Google account. No login. They tap upload and their photo is in the album. Every photo, every dance, every tear.</p>
         <button class="step-link" data-go="s3">Guest view <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-d3">
         <div class="snum">03</div>
-        <div class="stitle">Everything in one place</div>
-        <p class="sdesc">Every upload appears live in a shared gallery organized by Haldi, Sangeet, Baraat and Reception. Download everything in full quality. Organized by event. Yours to keep.</p>
+        <div class="stitle">Photographer uploads edited shots</div>
+        <p class="sdesc">The photographer gets a private upload link. Their edited shots go directly into the same album as the photos from guests. Couple receives both, organized by ceremony, in one place.</p>
+        <button class="step-link" data-go="s2" data-subtab="photo">Photographer access <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="step reveal reveal-d4">
+        <div class="snum">04</div>
+        <div class="stitle">The complete album, ready by morning</div>
+        <p class="sdesc">Every photo from every guest, plus the photographer's edited shots, organized by ceremony, in full quality. The couple gets one private link and downloads everything. Nothing is lost. Nothing is on a stranger's phone.</p>
         <button class="step-link" data-go="s4">See the gallery <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
     </div>
   </section>
 
   <section class="tired">
-    <div class="tired-tag">Sound familiar?</div>
-    <h2 class="tired-h">We are tired of the<br><em>WhatsApp group mess.</em></h2>
-    <p class="tired-sub">
-      One wedding. And somehow the photos end up scattered across 12 WhatsApp forwards, a Google Drive link nobody opened, and three cousin's camera rolls that nobody will ever share.
-    </p>
-    <div class="tired-pills">
-      <div class="tired-pill">"Video too large to send"</div>
-      <div class="tired-pill">"The Drive link expired"</div>
-      <div class="tired-pill">"Create a shared album they said"</div>
-      <div class="tired-pill">"Half the guests couldn't sign in"</div>
-      <div class="tired-pill">"I'll send it tomorrow"</div>
-      <div class="tired-pill">"It's somewhere in my camera roll"</div>
-    </div>
-
-    <div class="compare">
-      <div class="compare-row compare-head">
-        <div>The old way</div>
-        <div>With Yaadein</div>
+    <div class="sl">The problem no one is solving</div>
+    <div class="stat-row">
+      <div class="stat-block reveal reveal-d1">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Guest phones at the average Indian wedding</div>
       </div>
-      <div class="compare-row">
-        <div><span class="cx">✕</span> Guest needs a Google account to upload</div>
-        <div><span class="ck">✓</span> Scan QR, upload in 10 seconds. No account.</div>
+      <div class="stat-block reveal reveal-d2">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Of those photos that reach the couple today</div>
       </div>
-      <div class="compare-row">
-        <div><span class="cx">✕</span> Photos scattered across 5 WhatsApp groups</div>
-        <div><span class="ck">✓</span> Every guest photo in one live album</div>
-      </div>
-      <div class="compare-row">
-        <div><span class="cx">✕</span> Drive link expires, nobody opens it</div>
-        <div><span class="ck">✓</span> Live gallery, accessible for 30 days</div>
-      </div>
-      <div class="compare-row">
-        <div><span class="cx">✕</span> Everything dumped in one folder</div>
-        <div><span class="ck">✓</span> Sorted by Haldi, Sangeet, Baraat, Reception</div>
-      </div>
-      <div class="compare-row">
-        <div><span class="cx">✕</span> Couple gets 60 photos from 8 people</div>
-        <div><span class="ck">✓</span> 500+ photos from every guest in the room</div>
+      <div class="stat-block reveal reveal-d3">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Album with everything in it, using Yaadein</div>
       </div>
     </div>
-
-    <p class="tired-cta-text">Yaadein puts every guest photo in one place. Automatically. Before the night ends.</p>
+    <p class="tired-cta-text">Be the professional who delivers <em>everything.</em></p>
   </section>
 
-  <section class="memory">
-    <p class="memory-quote">The baraat video your father-in-law took. The moment your best friend cried. The cousins dancing at midnight. You were there. You should have all of it.</p>
+  <section class="ftrs">
+    <div class="sl">Everything in one album</div>
+    <div class="fgrid">
+
+      <div class="fcard">
+        <div class="fcard-icon"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="fcard-title">Guest upload via QR</div>
+        <p class="fcard-desc">Any guest scans. Camera opens in 2 seconds. No app, no login, no Google account.</p>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg></div>
+        <div class="fcard-title">Everything in one place</div>
+        <p class="fcard-desc">One album for every photo from every guest. Collected before the night is over, organized by ceremony, accessible by the couple from one link.</p>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <div class="fcard-title">Photographer upload link</div>
+        <p class="fcard-desc">The photographer gets a private upload link. Edited shots go straight into the album alongside photos from guests.</p>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
+        <div class="fcard-title">Organized by ceremony</div>
+        <p class="fcard-desc">Haldi, Sangeet, Baraat, Mehendi, Reception. Every photo sorted automatically.</p>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="fcard-title">Full quality download</div>
+        <p class="fcard-desc">The complete album in original resolution. No compression, no watermark. Yours to keep.</p>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M2 21v-1a10 10 0 0 1 10-10v0a10 10 0 0 1 10 10v1"/><path d="M16 17l2 2 4-4"/></svg></div>
+        <div class="fcard-title">Face recognition</div>
+        <p class="fcard-desc">Guests find every photo they appear in across all ceremonies. Instantly.</p>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="fcard-title">AI highlight reel</div>
+        <p class="fcard-desc">A 60-second video from the best moments. Music included. Ready to share the morning after.</p>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <div class="fcard-title">Printed photobook</div>
+        <p class="fcard-desc">A printed photobook from the complete album. Delivered to the couple.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="for-whom">
+    <div class="sl">Who it's built for</div>
+    <div class="fwgrid">
+
+      <div class="fwcard">
+        <div class="fwey">For photographers</div>
+        <div class="fwt">Win every client who asks<br><em>"can we get guest photos too?"</em></div>
+        <p class="fwd">That question comes up in every sales call. Until now there was no real answer. Yaadein gives you one. Your edited shots and every guest photo, in one album. One upload link. No extra work.</p>
+        <button class="btn bg" data-sc="early">I want this</button>
+      </div>
+
+      <div class="fwcard">
+        <div class="fwey">For planners</div>
+        <div class="fwt">Guest photos is the one request<br>you've never had an <em>answer for.</em></div>
+        <p class="fwd">Every couple asks. Most planners redirect or follow up for weeks chasing guests on WhatsApp. Now you hand them a QR code at the venue and the album builds itself. One less thing to chase.</p>
+        <button class="btn bg" data-sc="early">I want this</button>
+      </div>
+
+      <div class="fwcard">
+        <div class="fwey">For couples</div>
+        <div class="fwt">Your guests captured moments<br>your photographer <em>never saw.</em></div>
+        <p class="fwd">The laugh from your aunt's angle. The tear your photographer missed. The baraat from inside the crowd. Those photos are sitting on 200 different phones right now. Yaadein gets them all to you, by morning.</p>
+        <button class="btn bg" data-sc="early">I want this</button>
+      </div>
+
+    </div>
   </section>
 
   <section class="lcta" id="early">
-    <div>
-      <h2>Be the first<br>to use <em>Yaadein.</em></h2>
-      <p>We are building this for Indian weddings. Leave your email and we will reach out personally.</p>
+    <div class="lcta-left">
+      <div class="sl">Early access</div>
+      <h2>The first to offer this<br>will own their <em>market.</em></h2>
+      <p>We are onboarding personally. No automated emails, no sales calls. Just a real conversation about your next wedding.</p>
     </div>
-    <div>
-      <form class="early-form" id="earlyForm">
-        <input type="email" class="early-input" name="email" placeholder="your@email.com" required>
-        <button type="submit" class="btn bg">Get Early Access</button>
+    <div class="lcta-right">
+      <form id="earlyForm">
+        <input type="hidden" name="role" id="roleInput">
+        <div class="cdd" id="roleDD" style="margin-bottom:10px">
+          <button type="button" class="cdd-btn" id="roleDDBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="roleDDList" aria-labelledby="roleDDLabel">
+            <span id="roleDDLabel">Your role</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="cdd-list" id="roleDDList" role="listbox" aria-label="Your role">
+            <div class="cdd-opt" role="option" aria-selected="false" tabindex="-1" data-value="Photographer">Photographer</div>
+            <div class="cdd-opt" role="option" aria-selected="false" tabindex="-1" data-value="Planner">Planner / Coordinator</div>
+            <div class="cdd-opt" role="option" aria-selected="false" tabindex="-1" data-value="Couple">Couple</div>
+            <div class="cdd-opt" role="option" aria-selected="false" tabindex="-1" data-value="other">Other</div>
+          </div>
+        </div>
+        <input type="text" id="roleOther" class="early-input" placeholder="Tell us who you are..." style="display:none;margin-bottom:10px">
+        <div class="early-row">
+          <label for="earlyEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Email address</label>
+          <input type="email" id="earlyEmail" class="early-input" name="email" placeholder="your@email.com" required>
+          <button type="submit" class="btn bg">I want this</button>
+        </div>
       </form>
       <p class="early-note" id="early-note"></p>
+      <div class="founder-note">
+        <p>I built Yaadein because after my cousin's wedding, the photos from guests never came. People promised to share, then forgot. Most were deleted. What the photographer delivered was beautiful, but it was half the story. I'm personally reaching out to everyone who signs up. If you have a wedding coming up, let's talk.</p>
+        <span class="founder-sig">Vishal, founder</span>
+      </div>
+      <button class="demo-link" data-go="s4">See the live gallery first <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
     </div>
   </section>
 
   <footer class="footer">
     <div class="footer-brand">
       <div class="logo">Yaadein</div>
-      <div class="footer-tag">Guest photo sharing for Indian weddings.</div>
+      <div class="footer-tag">The complete wedding album platform for Indian wedding professionals.</div>
     </div>
     <div class="footer-right">
       <div class="footer-nav">
-        <a href="#" onclick="goTo('s1');return false;">How it works</a>
-        <a href="#" onclick="goTo('s2');return false;">Create event</a>
-        <a href="#" onclick="goTo('s3');return false;">Guest view</a>
-        <a href="#" onclick="goTo('s4');return false;">Live gallery</a>
+        <a href="#" onclick="goTo('s1');setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),300);return false;">How it works</a>
+        <a href="#" onclick="activateDemoNav();goTo('s2');return false;">Dashboard</a>
+        <a href="#" onclick="activateDemoNav();goTo('s3');return false;">Guest view</a>
+        <a href="#" onclick="activateDemoNav();goTo('s4');return false;">Guest gallery</a>
         <a href="#" onclick="goTo('s1');setTimeout(()=>document.getElementById('early').scrollIntoView({behavior:'smooth'}),300);return false;">Get early access</a>
       </div>
       <a href="mailto:contact.yaadein@gmail.com" class="footer-contact">contact.yaadein@gmail.com</a>
@@ -508,18 +970,25 @@ body::after{
 
 </div>
 
-<!-- ═══════════ S2: CREATE EVENT ═══════════ -->
+<!-- ═══════════ S2: DASHBOARD ═══════════ -->
 <div id="s2" class="screen">
-  <div class="preview-bar">
-    <span>This is a preview. The actual product is coming soon.</span>
-    <button class="preview-cta" onclick="goTo('s1');setTimeout(()=>{document.getElementById('early').scrollIntoView({behavior:'smooth'});document.getElementById('earlyForm').querySelector('input').focus()},300)">Get Early Access</button>
+
+  <!-- sticky anchor bar -->
+  <div class="s2-anchors">
+    <button class="s2-anchor on" onclick="s2ScrollTo('s2setup')">Event Setup</button>
+    <button class="s2-anchor" onclick="s2ScrollTo('s2live')">Live Dashboard</button>
+    <button class="s2-anchor" onclick="s2ScrollTo('s2preview')">Album Preview</button>
+  </div>
+
+  <!-- ── SECTION 1: SETUP ── -->
+  <div class="s2-section-head" id="s2setup">
+    <div class="sl">Event Setup</div>
   </div>
   <div class="cwrap">
     <div class="cform">
       <div class="ey">New Event</div>
-      <h2>Create your<br>wedding event.</h2>
-      <p class="sub">Fill in the details and your QR code is ready instantly. Print it, WhatsApp it, or display it at the venue entrance.</p>
-
+      <h2>Create your<br>wedding event</h2>
+      <p class="sub">Fill in the details and your QR code is ready instantly. Print it, WhatsApp it, or put it on the welcome table.</p>
       <div class="field">
         <label>Couple Names</label>
         <div class="frow">
@@ -536,14 +1005,22 @@ body::after{
         <input type="number" placeholder="350" min="1">
       </div>
       <div class="field">
+        <label>Couple's Email <span class="field-note">Album link sent here automatically</span></label>
+        <input type="email" id="cemail" placeholder="priya@gmail.com">
+      </div>
+      <div class="field">
+        <label>Couple's WhatsApp <span class="field-note">Optional</span></label>
+        <input type="tel" id="cwhatsapp" placeholder="+91 98765 43210">
+      </div>
+      <div class="field">
         <label>Sub Events</label>
         <div class="chips">
-          <div class="chip on" onclick="this.classList.toggle('on')"><span class="cdot"></span>Haldi</div>
-          <div class="chip on" onclick="this.classList.toggle('on')"><span class="cdot"></span>Sangeet</div>
-          <div class="chip" onclick="this.classList.toggle('on')"><span class="cdot"></span>Mehendi</div>
-          <div class="chip on" onclick="this.classList.toggle('on')"><span class="cdot"></span>Baraat</div>
-          <div class="chip on" onclick="this.classList.toggle('on')"><span class="cdot"></span>Reception</div>
-          <div class="chip" onclick="this.classList.toggle('on')"><span class="cdot"></span>After Party</div>
+          <div class="chip on" role="checkbox" aria-checked="true" tabindex="0" onclick="this.classList.toggle('on');this.setAttribute('aria-checked',this.classList.contains('on'))"><span class="cdot"></span>Haldi</div>
+          <div class="chip on" role="checkbox" aria-checked="true" tabindex="0" onclick="this.classList.toggle('on');this.setAttribute('aria-checked',this.classList.contains('on'))"><span class="cdot"></span>Sangeet</div>
+          <div class="chip" role="checkbox" aria-checked="false" tabindex="0" onclick="this.classList.toggle('on');this.setAttribute('aria-checked',this.classList.contains('on'))"><span class="cdot"></span>Mehendi</div>
+          <div class="chip on" role="checkbox" aria-checked="true" tabindex="0" onclick="this.classList.toggle('on');this.setAttribute('aria-checked',this.classList.contains('on'))"><span class="cdot"></span>Baraat</div>
+          <div class="chip on" role="checkbox" aria-checked="true" tabindex="0" onclick="this.classList.toggle('on');this.setAttribute('aria-checked',this.classList.contains('on'))"><span class="cdot"></span>Reception</div>
+          <div class="chip" role="checkbox" aria-checked="false" tabindex="0" onclick="this.classList.toggle('on');this.setAttribute('aria-checked',this.classList.contains('on'))"><span class="cdot"></span>After Party</div>
         </div>
       </div>
       <button class="btn bg" onclick="genQR()">
@@ -559,33 +1036,164 @@ body::after{
         <div class="qwhen" id="qd">Wedding · Select a date</div>
         <div class="qurl" id="qu">theyaadein.com/rp-wed-26</div>
         <div class="srow">
-          <button class="sb wa">WhatsApp</button>
-          <button class="sb">Copy Link</button>
-          <button class="sb">Download QR</button>
-          <button class="sb">Print Card</button>
+          <button class="sb wa" onclick="this.textContent='Sent!';setTimeout(()=>this.textContent='WhatsApp',2000)">WhatsApp</button>
+          <button class="sb" onclick="this.textContent='Copied';setTimeout(()=>this.textContent='Copy Link',2000)">Copy Link</button>
+          <button class="sb" onclick="this.textContent='Downloading...';setTimeout(()=>this.textContent='Download QR',2200)">Download QR</button>
+          <button class="sb" onclick="this.textContent='Sent to printer';setTimeout(()=>this.textContent='Print Card',2200)">Print Card</button>
         </div>
       </div>
-      <div class="cinfo">
+      <div class="cinfo" id="cinfo">
         <strong>What to do next</strong>
-        Print the QR code and place it at the entrance and welcome table<br>
-        Share the link on your wedding WhatsApp group<br>
-        The gallery fills up automatically as guests upload
+        Enter the couple's email above and click Generate QR Code<br>
+        They'll receive their private album link automatically<br>
+        Print the QR and place it at the entrance and welcome table<br>
+        Share the guest link on the wedding WhatsApp group
+      </div>
+      <div class="couple-notif" id="coupleNotif">
+        <strong>Couple notified</strong>
+        Album link sent to <span class="couple-email" id="coupleEmailDisplay"></span> — they can access everything from day one. Share the photographer link below so edited shots go straight into the same album.
+      </div>
+      <div class="ph-link-box">
+        <strong>Photographer private link</strong>
+        <div class="ph-link-row">
+          <div class="ph-link-url">theyaadein.com/rp-wed-26/photographer</div>
+          <button class="ph-link-copy" onclick="this.textContent='Copied';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- ── SECTION 2: LIVE DASHBOARD ── -->
+  <div class="s2-section-head dark" id="s2live">
+    <div class="sl">Live Dashboard</div>
+  </div>
+  <div class="phwrap">
+    <div class="phform">
+      <input type="file" id="phInput" multiple accept="image/*" style="display:none" onchange="handlePhInput(this)">
+      <div class="ph-upload-bar" style="margin-bottom:16px">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:4px">Your edited shots</div>
+          <span class="ph-upload-count" id="phCount">48 shots uploaded</span>
+        </div>
+        <button class="btn bo" style="padding:9px 20px;font-size:.64rem" onclick="document.getElementById('phInput').click()">+ Upload more</button>
+      </div>
+      <div class="ph-grid">
+        <div class="ph-thumb"><picture><source srcset="images/haldi/1.webp" type="image/webp"><img src="images/haldi/1.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/haldi/3.webp" type="image/webp"><img src="images/haldi/3.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/sangeet/1.webp" type="image/webp"><img src="images/sangeet/1.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/sangeet/3.webp" type="image/webp"><img src="images/sangeet/3.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/sangeet/5.webp" type="image/webp"><img src="images/sangeet/5.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/baraat/1.webp" type="image/webp"><img src="images/baraat/1.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/baraat/2.webp" type="image/webp"><img src="images/baraat/2.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/baraat/4.webp" type="image/webp"><img src="images/baraat/4.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/reception/1.webp" type="image/webp"><img src="images/reception/1.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/reception/2.webp" type="image/webp"><img src="images/reception/2.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/reception/4.webp" type="image/webp"><img src="images/reception/4.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/haldi/2.webp" type="image/webp"><img src="images/haldi/2.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/haldi/4.webp" type="image/webp"><img src="images/haldi/4.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/sangeet/2.webp" type="image/webp"><img src="images/sangeet/2.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/sangeet/4.webp" type="image/webp"><img src="images/sangeet/4.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/baraat/3.webp" type="image/webp"><img src="images/baraat/3.jpg" alt=""></picture></div>
+        <div class="ph-thumb"><picture><source srcset="images/reception/3.webp" type="image/webp"><img src="images/reception/3.jpg" alt=""></picture></div>
+        <div class="ph-thumb ph-thumb-new" onclick="document.getElementById('phInput').click()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="ph-drop-small" onclick="document.getElementById('phInput').click()">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--gdk);fill:none;stroke-width:1.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Drop more files here or click to browse · JPEG · PNG · RAW</span>
+      </div>
+    </div>
+
+    <div class="phstatus">
+      <div class="phcard">
+        <div class="phcard-date">Wedding · 18 May 2026 · Mumbai</div>
+        <div class="phcard-name">Rahul &amp; Priya</div>
+      </div>
+      <div class="phcard">
+        <div class="phcard-label">Photos collected from guests</div>
+        <div class="ph-big">312</div>
+        <div class="ph-big-label">photos from 47 guests</div>
+        <div>
+          <div class="ph-cer-row"><span>Haldi</span><span class="ph-cer-n">64 photos</span></div>
+          <div class="ph-cer-row"><span>Sangeet</span><span class="ph-cer-n">108 photos</span></div>
+          <div class="ph-cer-row"><span>Baraat</span><span class="ph-cer-n">78 photos</span></div>
+          <div class="ph-cer-row"><span>Reception</span><span class="ph-cer-n">62 photos</span></div>
+        </div>
+      </div>
+      <div class="phtotal">
+        <div>
+          <div class="phtotal-num">360</div>
+          <div class="phtotal-label">Total in album</div>
+        </div>
+        <div class="phtotal-breakdown">312 photos from guests<br>+ 48 your edited shots</div>
+      </div>
+      <div class="ph-actions">
+        <button class="btn bo" id="phCopyBtn" onclick="phCopyLink()">Copy couple's album link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ALBUM PREVIEW ── -->
+  <section class="ap-section" id="s2preview">
+    <div class="ap-head reveal">
+      <div>
+        <div class="sl">Album Preview</div>
+        <p class="ap-desc">This is what the couple will see. Your edited shots alongside every photo captured by guests, organised by ceremony.</p>
+      </div>
+      <div class="ap-count-block">
+        <div class="ap-num" id="apNum">360</div>
+        <div class="ap-label">photos ready · 312 guest · 48 yours</div>
+      </div>
+    </div>
+    <div class="ap-src-tabs" role="tablist" aria-label="Album source">
+      <button class="ap-src on" role="tab" aria-selected="true" data-apsrc="all" onclick="apSrc(this)">All Photos</button>
+      <button class="ap-src" role="tab" aria-selected="false" data-apsrc="pro" onclick="apSrc(this)">Your Edits</button>
+      <button class="ap-src" role="tab" aria-selected="false" data-apsrc="guest" onclick="apSrc(this)">Guest Shots</button>
+    </div>
+    <div class="ap-grid reveal" id="apGrid"></div>
+    <div class="ap-deliver reveal">
+      <div>
+        <div class="ap-deliver-title">Ready to deliver</div>
+        <div class="ap-deliver-sub">Send the couple their private album link. They get instant access to everything: guest moments and your edited shots, in one place.</div>
+      </div>
+      <button class="btn bg" style="flex-shrink:0" onclick="phCopyLink()">
+        Copy couple's album link
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <div class="demo-next">
+    <div class="demo-next-inner">
+      <div class="demo-next-eyebrow">Up next</div>
+      <div class="demo-next-heading">The Guest View</div>
+      <p class="demo-next-sub">What every guest sees when they scan the QR code. No app, no login. Scan and upload in under 30 seconds.</p>
+      <button class="demo-next-btn" onclick="goTo('s3')">
+        See what guests experience
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
 </div>
 
 <!-- ═══════════ S3: GUEST VIEW ═══════════ -->
 <div id="s3" class="screen">
-  <div class="gintro">
+  <div class="s3-anchors">
+    <button class="s3-anchor on" onclick="s3ScrollTo('s3upload')">Guest Upload</button>
+    <button class="s3-anchor" onclick="s3ScrollTo('s3gallery')">Shared Album</button>
+  </div>
+  <div class="s3-body">
+  <div class="gintro" id="s3upload">
     <div class="ey" style="justify-content:center">Guest Experience</div>
-    <h2>What guests see when they scan.</h2>
+    <h2>What guests see when they scan</h2>
     <p>No app. No login. Scan and upload in under 30 seconds.</p>
   </div>
   <div class="phone">
     <div class="pnotch"></div>
     <div class="phero">
-      <img src="images/phone-hero.jpg" alt="Wedding guests celebrating">
+      <picture><source srcset="images/phone-hero.webp" type="image/webp"><img src="images/phone-hero.jpg" alt="Wedding guests celebrating"></picture>
       <div class="phero-ov">
         <div class="ppill">Rahul &amp; Priya · Wedding 2026</div>
         <div class="pcname">Share your <em>moment</em></div>
@@ -596,10 +1204,19 @@ body::after{
         <div class="cn" id="gc">312</div>
         <div class="cl">memories shared so far</div>
       </div>
+      <div class="pcer">
+        <div class="pcer-label">You're at</div>
+        <div class="pcer-chips" role="radiogroup" aria-label="Which ceremony are you at">
+          <button class="pcer-chip on" role="radio" aria-checked="true" onclick="this.closest('.pcer-chips').querySelectorAll('.pcer-chip').forEach(c=>{c.classList.remove('on');c.setAttribute('aria-checked','false')});this.classList.add('on');this.setAttribute('aria-checked','true')">Haldi</button>
+          <button class="pcer-chip" role="radio" aria-checked="false" onclick="this.closest('.pcer-chips').querySelectorAll('.pcer-chip').forEach(c=>{c.classList.remove('on');c.setAttribute('aria-checked','false')});this.classList.add('on');this.setAttribute('aria-checked','true')">Sangeet</button>
+          <button class="pcer-chip" role="radio" aria-checked="false" onclick="this.closest('.pcer-chips').querySelectorAll('.pcer-chip').forEach(c=>{c.classList.remove('on');c.setAttribute('aria-checked','false')});this.classList.add('on');this.setAttribute('aria-checked','true')">Baraat</button>
+          <button class="pcer-chip" role="radio" aria-checked="false" onclick="this.closest('.pcer-chips').querySelectorAll('.pcer-chip').forEach(c=>{c.classList.remove('on');c.setAttribute('aria-checked','false')});this.classList.add('on');this.setAttribute('aria-checked','true')">Reception</button>
+        </div>
+      </div>
       <div class="uwrap">
         <div class="uglow"></div>
         <button class="ubtn" onclick="tap()">
-          <svg width="26" height="26" fill="none" stroke="#080403" stroke-width="1.6" viewBox="0 0 24 24">
+          <svg width="26" height="26" fill="none" stroke="#0f0d0a" stroke-width="1.6" viewBox="0 0 24 24">
             <path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <circle cx="12" cy="13" r="3"/>
           </svg>
@@ -608,18 +1225,69 @@ body::after{
       </div>
       <div class="phint">Tap to open camera or choose from gallery</div>
       <div class="recents">
-        <div class="rlabel">Recent from guests</div>
+        <div class="rlabel-row">
+          <span class="rlabel">Recent from guests</span>
+        </div>
         <div class="rrow">
-          <img class="rimg" src="images/thumbs/haldi.jpg" alt="Haldi ceremony photo">
-          <img class="rimg" src="images/thumbs/sangeet.jpg" alt="Sangeet dance photo">
-          <img class="rimg" src="images/thumbs/bride.jpg" alt="Indian bride photo">
-          <img class="rimg" src="images/thumbs/reception.jpg" alt="Wedding reception photo">
+          <picture><source srcset="images/thumbs/haldi.webp" type="image/webp"><img class="rimg" src="images/thumbs/haldi.jpg" alt="Haldi ceremony photo"></picture>
+          <picture><source srcset="images/thumbs/sangeet.webp" type="image/webp"><img class="rimg" src="images/thumbs/sangeet.jpg" alt="Sangeet dance photo"></picture>
+          <picture><source srcset="images/thumbs/bride.webp" type="image/webp"><img class="rimg" src="images/thumbs/bride.jpg" alt="Indian bride photo"></picture>
+          <picture><source srcset="images/thumbs/reception.webp" type="image/webp"><img class="rimg" src="images/thumbs/reception.jpg" alt="Wedding reception photo"></picture>
         </div>
       </div>
       <div class="pnbox">
-        <div class="pt">Your name (optional)</div>
+        <input class="pninput" type="text" placeholder="Your name (optional)">
         <div class="ps">So the couple knows it is from you</div>
       </div>
+    </div>
+  </div>
+  </div><!-- end s3-body -->
+  <!-- ── GUEST GALLERY ── -->
+  <section class="gg-section" id="s3gallery">
+    <div class="gg-head reveal">
+      <div>
+        <div class="sl">The Wedding Album</div>
+        <p class="gg-sub">360 photos · 312 guest shots · 48 photographer edits · Find yourself, react, save what you love</p>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="gg-face-btn" onclick="openFaceModal()">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+          Find my photos
+        </button>
+        <button class="gg-face-btn" onclick="openReelModal()">
+          <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          AI Reel
+        </button>
+        <button class="gg-face-btn" onclick="demoDownload(this)">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download All
+        </button>
+      </div>
+    </div>
+    <div class="gg-src-tabs" role="tablist" aria-label="Photo source">
+      <button class="gg-src on" role="tab" aria-selected="true" data-gsrc="all" onclick="ggSrc(this)">All Photos</button>
+      <button class="gg-src" role="tab" aria-selected="false" data-gsrc="photographer" onclick="ggSrc(this)">Photographer's Edits</button>
+      <button class="gg-src" role="tab" aria-selected="false" data-gsrc="guest" onclick="ggSrc(this)">Guest Shots</button>
+    </div>
+    <div class="gg-filters" role="tablist" aria-label="Ceremony filter">
+      <button class="gg-filt on" role="tab" aria-selected="true" onclick="ggFilt(this,'all')">All</button>
+      <button class="gg-filt" role="tab" aria-selected="false" onclick="ggFilt(this,'haldi')">Haldi</button>
+      <button class="gg-filt" role="tab" aria-selected="false" onclick="ggFilt(this,'sangeet')">Sangeet</button>
+      <button class="gg-filt" role="tab" aria-selected="false" onclick="ggFilt(this,'baraat')">Baraat</button>
+      <button class="gg-filt" role="tab" aria-selected="false" onclick="ggFilt(this,'reception')">Reception</button>
+    </div>
+    <div class="gg-grid reveal" id="ggGrid"></div>
+  </section>
+
+  <div class="demo-next">
+    <div class="demo-next-inner">
+      <div class="demo-next-eyebrow">Up next</div>
+      <div class="demo-next-heading">The Couple's View</div>
+      <p class="demo-next-sub">The private album Rahul and Priya receive. Every guest moment and every photographer edit, in one place.</p>
+      <button class="demo-next-btn" onclick="goTo('s4')">
+        See what couples receive
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
     </div>
   </div>
 </div>
@@ -630,35 +1298,98 @@ body::after{
     <div class="gtitle">
       <h2>Rahul &amp; Priya's Wedding</h2>
       <div class="gmrow">
-        <span class="lpill"><span class="ldot"></span>Live</span>
-        <span class="gmeta" id="gm">312 photos · 28 videos · 47 guests uploading</span>
+        <span class="gmeta" id="gm">312 guest photos · 48 photographer edits</span>
+      </div>
+      <div class="gcontrib">
+        <span class="gcontrib-item"><span class="gcontrib-num">47</span> guests</span>
+        <span class="gcontrib-dot"></span>
+        <span class="gcontrib-item">All 4 ceremonies covered</span>
       </div>
     </div>
     <div class="gactions">
-      <button class="btn bo" style="padding:10px 20px;font-size:.7rem">Download All</button>
-      <button class="btn bg" style="padding:10px 20px;font-size:.7rem">Share Gallery</button>
+      <button class="btn bo" style="padding:10px 20px;font-size:.7rem" onclick="openFaceModal()">Find My Photos</button>
+      <button class="btn bo" style="padding:10px 20px;font-size:.7rem" onclick="openReelModal()">AI Reel</button>
+      <button class="btn bo" style="padding:10px 20px;font-size:.7rem" onclick="demoDownload(this)">Download All</button>
+      <button class="btn bg" style="padding:10px 20px;font-size:.7rem" onclick="demoShare(this)">Share Gallery</button>
     </div>
   </div>
-  <div class="gfilts">
-    <button class="gf on" onclick="filt(this)">All</button>
-    <button class="gf" onclick="filt(this)">Haldi</button>
-    <button class="gf" onclick="filt(this)">Sangeet</button>
-    <button class="gf" onclick="filt(this)">Baraat</button>
-    <button class="gf" onclick="filt(this)">Reception</button>
+  <div class="gfilts gfilts-source" role="tablist" aria-label="Photo source">
+    <button class="gsrc on" role="tab" aria-selected="true" data-src="all" onclick="filtSrc(this)">All Photos</button>
+    <button class="gsrc" role="tab" aria-selected="false" data-src="photographer" onclick="filtSrc(this)">Photographer's Edits</button>
+    <button class="gsrc" role="tab" aria-selected="false" data-src="guest" onclick="filtSrc(this)">Guest Shots</button>
   </div>
+  <div class="gfilts" role="tablist" aria-label="Ceremony filter">
+    <button class="gf on" role="tab" aria-selected="true" data-cat="all" onclick="filt(this)">All</button>
+    <button class="gf" role="tab" aria-selected="false" data-cat="haldi" onclick="filt(this)">Haldi</button>
+    <button class="gf" role="tab" aria-selected="false" data-cat="sangeet" onclick="filt(this)">Sangeet</button>
+    <button class="gf" role="tab" aria-selected="false" data-cat="baraat" onclick="filt(this)">Baraat</button>
+    <button class="gf" role="tab" aria-selected="false" data-cat="reception" onclick="filt(this)">Reception</button>
+  </div>
+  <div class="gnot" id="gnot"><span class="gnot-dot"></span><span id="gnotTxt"></span></div>
   <div class="masonry" id="masonry"></div>
+  <div class="pro-grid-full" id="proGrid" style="display:none"></div>
 </div>
 
-<div class="toast" id="toast"><span class="tdot"></span><span id="ttxt">Anjali uploaded 2 new photos</span></div>
+<!-- Face Recognition Modal -->
+<div class="amodal" id="faceModal">
+  <button class="amodal-close" onclick="closeFaceModal()">✕</button>
+  <div class="face-ring">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+    <div class="face-scan"></div>
+  </div>
+  <h3 id="faceTitle">Scanning for your face</h3>
+  <p id="faceDesc" class="astatus">Hold still, analysing 360 photos</p>
+  <p id="faceResult" style="display:none;font-size:.84rem;color:var(--c2);max-width:300px;line-height:1.7">Found <strong style="color:var(--gold)">23 photos</strong> with you across Haldi, Sangeet and Reception.</p>
+</div>
+
+<!-- AI Reel Modal -->
+<div class="amodal" id="reelModal">
+  <button class="amodal-close" onclick="closeReelModal()">✕</button>
+  <p class="astatus" id="reelStatus">Generating your highlight reel</p>
+  <div class="reel-wrap" id="reelWrap" style="display:none">
+    <div class="reel-collage">
+      <picture><source srcset="images/haldi/1.webp" type="image/webp"><img src="images/haldi/1.jpg" alt=""></picture><picture><source srcset="images/sangeet/2.webp" type="image/webp"><img src="images/sangeet/2.jpg" alt=""></picture>
+      <picture><source srcset="images/baraat/1.webp" type="image/webp"><img src="images/baraat/1.jpg" alt=""></picture><picture><source srcset="images/reception/3.webp" type="image/webp"><img src="images/reception/3.jpg" alt=""></picture>
+      <picture><source srcset="images/haldi/3.webp" type="image/webp"><img src="images/haldi/3.jpg" alt=""></picture><picture><source srcset="images/sangeet/4.webp" type="image/webp"><img src="images/sangeet/4.jpg" alt=""></picture>
+    </div>
+    <div class="reel-ov">
+      <button class="reel-play" onclick="reelPlayTap(this)"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+      <div class="reel-title">Rahul &amp; Priya</div>
+      <div class="reel-sub">312 moments · 47 guests · May 2026</div>
+    </div>
+  </div>
+  <h3 id="reelTitle">AI Highlight Reel</h3>
+  <p id="reelDesc" style="font-size:.84rem;color:var(--c2);max-width:300px;line-height:1.7">Analysing 312 photos from guests and picking the best moments. This takes about 30 seconds.</p>
+</div>
+
+
+<!-- Photo Lightbox -->
+<div class="amodal" id="photoModal" onclick="closePhotoModal()">
+  <button class="lb-close" onclick="closePhotoModal()">✕</button>
+  <div class="lb-counter" id="lbCounter"></div>
+  <button class="lb-arrow prev" onclick="event.stopPropagation();lbNav(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <div class="lb-wrap" onclick="event.stopPropagation()">
+    <div class="lb-img-box" id="lbBox">
+      <img id="photoLightboxImg" src="" alt="">
+      <video id="lbVideo" controls playsinline style="display:none;max-width:min(1000px,90vw);max-height:90vh;outline:none"></video>
+      <div class="lb-info" id="lbInfo">
+        <div class="lb-info-name" id="lbName"></div>
+        <div class="lb-info-sub" id="lbSub"></div>
+      </div>
+    </div>
+  </div>
+  <button class="lb-arrow next" onclick="event.stopPropagation();lbNav(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+
 
 <nav class="bnav">
-  <button class="bn on" data-t="s1">
+  <button class="bn" data-t="s1">
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span>Home</span>
   </button>
   <button class="bn" data-t="s2">
     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="17" x2="20" y2="17"/><line x1="17" y1="14" x2="17" y2="20"/></svg>
-    <span>Create</span>
+    <span>Photographer</span>
   </button>
   <button class="bn" data-t="s3">
     <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -666,28 +1397,172 @@ body::after{
   </button>
   <button class="bn" data-t="s4">
     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-    <span>Gallery</span>
+    <span>Couple</span>
   </button>
 </nav>
 
 <script>
+// ── FOCUS TRAP ──
+function trapFocus(modal) {
+  const sel = 'button:not([disabled]),[href],input:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  const els = [...modal.querySelectorAll(sel)];
+  if (!els.length) return;
+  function handler(e) {
+    if (e.key !== 'Tab') return;
+    const first = els[0], last = els[els.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+  modal._trap = handler;
+  modal.addEventListener('keydown', handler);
+}
+function untrapFocus(modal) {
+  if (modal._trap) { modal.removeEventListener('keydown', modal._trap); modal._trap = null; }
+}
+
+// ── WEBP HELPER ──
+function wpic(src, alt, extra) {
+  const webp = src.replace(/\.jpe?g$/i, '.webp');
+  return `<picture><source srcset="${webp}" type="image/webp"><img src="${src}" alt="${alt}" loading="lazy"${extra ? ' ' + extra : ''}></picture>`;
+}
+
 // ── NAVIGATION ──
 const SCREENS = document.querySelectorAll('.screen');
 const TABS = document.querySelectorAll('[data-t]');
+let s1ReturnId = null;
+
+const DEMO_SCREENS = new Set(['s2','s3','s4']);
+
+function activateDemoNav() {
+  document.getElementById('navDefault').style.display = 'none';
+  document.getElementById('navDemoTabs').classList.add('on');
+  document.querySelector('.logo').style.opacity = '0';
+  document.querySelector('.logo').style.pointerEvents = 'none';
+}
+
+function enterDemo() {
+  activateDemoNav();
+  goTo('s2');
+}
 
 function goTo(id) {
   SCREENS.forEach(s => { s.classList.remove('on'); s.scrollTop = 0; });
   TABS.forEach(t => t.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   TABS.forEach(t => { if (t.dataset.t === id) t.classList.add('on'); });
-  if (id === 's4') buildGallery('all');
+
+  if (id === 's1') {
+    document.getElementById('navDemoTabs').classList.remove('on');
+    document.getElementById('navDefault').style.display = '';
+    document.querySelector('.logo').style.opacity = '';
+    document.querySelector('.logo').style.pointerEvents = '';
+  }
+  if (id === 's4') {
+    currentSource = 'all'; currentCat = 'all';
+    document.querySelectorAll('.gsrc').forEach((b,i) => { b.classList.toggle('on', i===0); b.setAttribute('aria-selected', i===0 ? 'true' : 'false'); });
+    document.querySelectorAll('.gf').forEach((b,i) => { b.classList.toggle('on', i===0); b.setAttribute('aria-selected', i===0 ? 'true' : 'false'); });
+    setTimeout(buildGallery, 80);
+    if (!toastInterval) toastInterval = setInterval(fireToast, 4500);
+  } else {
+    clearInterval(toastInterval); toastInterval = null;
+  }
+  if (id === 's2') {
+    currentApSrc = 'all';
+    document.querySelectorAll('.ap-src').forEach((b,i) => b.classList.toggle('on', i===0));
+    s2UpdateAnchors(); setTimeout(buildAlbumPreview, 80);
+  }
+  if (id === 's3') {
+    currentGuestSrc = 'all'; currentGuestCat = 'all';
+    document.querySelectorAll('.gg-src').forEach((b,i) => b.classList.toggle('on', i===0));
+    document.querySelectorAll('.gg-filt').forEach((b,i) => b.classList.toggle('on', i===0));
+    s3UpdateAnchors(); setTimeout(buildGuestGallery, 80);
+  }
+  if (id === 's1' && s1ReturnId) {
+    const el = document.getElementById(s1ReturnId);
+    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 80);
+    s1ReturnId = null;
+  }
+  location.hash = id;
 }
 
-TABS.forEach(t => t.addEventListener('click', () => goTo(t.dataset.t)));
+
+function s2ScrollTo(targetId) {
+  const screen = document.getElementById('s2');
+  const el = document.getElementById(targetId);
+  if (!el || !screen) return;
+  const anchorBar = screen.querySelector('.s2-anchors');
+  const anchorH = anchorBar ? anchorBar.offsetHeight : 0;
+  const top = el.offsetTop - anchorH;
+  screen.scrollTo({ top, behavior: 'smooth' });
+}
+
+function s2UpdateAnchors() {
+  const screen = document.getElementById('s2');
+  const anchors = document.querySelectorAll('.s2-anchor');
+  if (!screen || !anchors.length) return;
+  const anchorBar = screen.querySelector('.s2-anchors');
+  const anchorH = anchorBar ? anchorBar.getBoundingClientRect().height : 0;
+  const liveEl = document.getElementById('s2live');
+  const previewEl = document.getElementById('s2preview');
+  if (!liveEl) return;
+  const threshold = anchorH + 40;
+  const liveTop = liveEl.getBoundingClientRect().top;
+  const previewTop = previewEl ? previewEl.getBoundingClientRect().top : Infinity;
+  const isPreview = previewTop <= threshold;
+  const isLive = !isPreview && liveTop <= threshold;
+  anchors[0].classList.toggle('on', !isLive && !isPreview);
+  if (anchors[1]) anchors[1].classList.toggle('on', isLive);
+  if (anchors[2]) anchors[2].classList.toggle('on', isPreview);
+}
+
+document.getElementById('s2').addEventListener('scroll', s2UpdateAnchors);
+
+function s3ScrollTo(targetId) {
+  const screen = document.getElementById('s3');
+  const el = document.getElementById(targetId);
+  if (!el || !screen) return;
+  const anchorBar = screen.querySelector('.s3-anchors');
+  const anchorH = anchorBar ? anchorBar.offsetHeight : 0;
+  const top = el.offsetTop - anchorH;
+  screen.scrollTo({ top, behavior: 'smooth' });
+}
+
+function s3UpdateAnchors() {
+  const screen = document.getElementById('s3');
+  const anchors = document.querySelectorAll('.s3-anchor');
+  if (!screen || !anchors.length) return;
+  const anchorBar = screen.querySelector('.s3-anchors');
+  const anchorH = anchorBar ? anchorBar.getBoundingClientRect().height : 0;
+  const galleryEl = document.getElementById('s3gallery');
+  if (!galleryEl) return;
+  const isGallery = galleryEl.getBoundingClientRect().top <= anchorH + 40;
+  anchors[0].classList.toggle('on', !isGallery);
+  anchors[1].classList.toggle('on', isGallery);
+}
+
+document.getElementById('s3').addEventListener('scroll', s3UpdateAnchors);
+
+TABS.forEach(t => t.addEventListener('click', () => {
+  const dest = t.dataset.t;
+  if (DEMO_SCREENS.has(dest)) activateDemoNav();
+  goTo(dest);
+}));
 
 document.addEventListener('click', e => {
   const go = e.target.closest('[data-go]');
-  if (go) { goTo(go.dataset.go); return; }
+  if (go) {
+    if (go.closest('#how')) s1ReturnId = 'how';
+    const dest = go.dataset.go;
+    if (DEMO_SCREENS.has(dest)) activateDemoNav();
+    goTo(dest);
+    if (go.dataset.subtab === 'photo') {
+      setTimeout(() => {
+        const el = document.getElementById('s2live');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 80);
+    }
+    return;
+  }
   const sc = e.target.closest('[data-sc]');
   if (sc) {
     const el = document.getElementById(sc.dataset.sc);
@@ -707,24 +1582,91 @@ function uqr() {
   }
   const slug = `${n1[0].toLowerCase()}${n2[0].toLowerCase()}-wed-${String(new Date().getFullYear()).slice(-2)}`;
   document.getElementById('qu').textContent = `theyaadein.com/${slug}`;
+  // sync couple gallery title and reel overlay
+  document.querySelector('#s4 .gtitle h2').textContent = `${n1} & ${n2}'s Wedding`;
+  document.querySelector('.reel-title').textContent = `${n1} & ${n2}`;
+  document.querySelector('.reel-sub').textContent = `312 moments · 47 guests · ${new Date().toLocaleDateString('en-IN', {month:'long', year:'numeric'})}`;
 }
 
 function genQR() {
-  document.getElementById('qrcode').innerHTML = '';
-  new QRCode(document.getElementById('qrcode'), {
-    text: 'https://' + document.getElementById('qu').textContent,
-    width: 190, height: 190, colorDark: '#080403', colorLight: '#ffffff'
-  });
+  const qrEl = document.getElementById('qrcode');
+  const url = 'https://' + document.getElementById('qu').textContent;
+  qrEl.innerHTML = '';
+  new QRCode(qrEl, { text: url, width: 190, height: 190, colorDark: '#0f0d0a', colorLight: '#ffffff' });
+  const email = (document.getElementById('cemail').value || '').trim();
+  const notif = document.getElementById('coupleNotif');
+  const cinfo = document.getElementById('cinfo');
+  if (email && notif) {
+    document.getElementById('coupleEmailDisplay').textContent = email;
+    notif.classList.add('on');
+    cinfo.style.display = 'none';
+  }
 }
 setTimeout(genQR, 600);
 
 
 // ── EARLY ACCESS ──
 const earlyForm = document.getElementById('earlyForm');
+const roleInput = document.getElementById('roleInput');
+const roleOther = document.getElementById('roleOther');
+const roleDD = document.getElementById('roleDD');
+const roleDDBtn = document.getElementById('roleDDBtn');
+const roleDDLabel = document.getElementById('roleDDLabel');
+let roleValue = '';
+
+roleDDBtn.addEventListener('click', () => {
+  const isOpen = roleDD.classList.toggle('open');
+  roleDDBtn.setAttribute('aria-expanded', isOpen);
+});
+document.addEventListener('click', e => {
+  if (!roleDD.contains(e.target)) {
+    roleDD.classList.remove('open');
+    roleDDBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+document.querySelectorAll('.cdd-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.cdd-opt').forEach(o => { o.classList.remove('selected'); o.setAttribute('aria-selected','false'); });
+    opt.classList.add('selected');
+    opt.setAttribute('aria-selected', 'true');
+    roleValue = opt.dataset.value;
+    roleDDLabel.textContent = opt.textContent;
+    roleDDLabel.style.color = 'var(--cream)';
+    roleDD.classList.remove('open');
+    roleDDBtn.setAttribute('aria-expanded', 'false');
+    if (roleValue === 'other') {
+      roleOther.style.display = 'block';
+      roleInput.value = '';
+    } else {
+      roleOther.style.display = 'none';
+      roleOther.value = '';
+      roleInput.value = roleValue;
+    }
+  });
+});
+
 earlyForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const note = document.getElementById('early-note');
   const btn = earlyForm.querySelector('button[type="submit"]');
+
+  if (!roleValue) {
+    note.style.color = '#e07070';
+    note.textContent = 'Please select who you are.';
+    return;
+  }
+  if (roleValue === 'other') {
+    const otherVal = roleOther.value.trim();
+    if (!otherVal) {
+      note.style.color = '#e07070';
+      note.textContent = 'Please tell us who you are.';
+      roleOther.focus();
+      return;
+    }
+    roleInput.value = otherVal;
+  }
+
   const formData = new FormData(earlyForm);
   formData.append('access_key', '23dd6ec7-5a8e-4690-a10d-98d7ad9d2477');
   formData.append('subject', 'Yaadein Early Access Request');
@@ -735,15 +1677,20 @@ earlyForm.addEventListener('submit', async (e) => {
     const data = await res.json();
     if (res.ok) {
       note.style.color = 'var(--gold)';
-      note.textContent = 'We have your email. We will be in touch personally.';
+      note.textContent = 'Done. Vishal will reach out personally.';
       earlyForm.reset();
-      earlyForm.querySelector('input').disabled = true;
+      roleValue = '';
+      roleDDLabel.textContent = 'Your role';
+      roleDDLabel.style.color = '';
+      document.querySelectorAll('.cdd-opt').forEach(o => o.classList.remove('selected'));
+      roleOther.style.display = 'none';
+      earlyForm.querySelector('input[type="email"]').disabled = true;
       btn.textContent = 'Done';
     } else throw new Error(data.message);
   } catch {
     note.style.color = '#e07070';
     note.textContent = 'Something went wrong. Please try again.';
-    btn.textContent = 'Get Early Access';
+    btn.textContent = 'I want this';
     btn.disabled = false;
   }
 });
@@ -754,27 +1701,63 @@ function tap() {
   gc++;
   document.getElementById('gc').textContent = gc;
   const b = document.querySelector('.ubtn');
-  b.style.transform = 'scale(.88)';
-  setTimeout(() => b.style.transform = '', 160);
+  const span = b.querySelector('span');
+  const svg = b.querySelector('svg');
+  b.style.transform = 'scale(.9)';
+  b.style.background = 'var(--glt)';
+  svg.style.opacity = '0';
+  span.textContent = 'Photo Live!';
+  const hint = document.querySelector('.phint');
+  const origHint = hint.textContent;
+  hint.style.color = 'var(--gold)';
+  hint.textContent = 'Your photo is now in the album';
+  setTimeout(() => {
+    b.style.transform = '';
+    setTimeout(() => {
+      svg.style.opacity = '';
+      span.textContent = 'Add Photo';
+      b.style.background = '';
+      hint.textContent = origHint;
+      hint.style.color = '';
+    }, 1600);
+  }, 140);
 }
 
 // ── GALLERY ──
 const GNAMES = ['Anjali K.','Rohit M.','Priyanka S.','Arjun T.','Deepika N.','Vikram P.','Sneha R.','Karan V.','Pooja A.','Meera G.','Nikhil B.','Siya T.'];
 const GH = [175,240,195,285,160,220,305,190,255,168,235,270,185,215,260,178,248,298,188,225];
 
+// first 3 per ceremony = photographer edited shots, rest = photos from guests
+const PRO_IMGS = new Set([
+  'haldi/1.jpg','haldi/2.jpg','haldi/3.jpg',
+  'sangeet/1.jpg','sangeet/2.jpg','sangeet/3.jpg',
+  'baraat/1.jpg','baraat/2.jpg','baraat/3.jpg',
+  'reception/1.jpg','reception/2.jpg','reception/3.jpg'
+]);
+
 const CAT_IMGS = {
-  haldi:     ['haldi/1.jpg','haldi/2.jpg','haldi/3.jpg','haldi/4.jpg','haldi/5.jpg','haldi/6.jpg','haldi/7.jpg','haldi/8.jpg'],
-  sangeet:   ['sangeet/1.jpg','sangeet/2.jpg','sangeet/3.jpg','sangeet/4.jpg','sangeet/5.jpg','sangeet/6.jpg','sangeet/7.jpg','sangeet/8.jpg'],
-  baraat:    ['baraat/1.jpg','baraat/2.jpg','baraat/3.jpg','baraat/4.jpg','baraat/5.jpg','baraat/6.jpg','baraat/7.jpg','baraat/8.jpg'],
-  reception: ['reception/1.jpg','reception/2.jpg','reception/3.jpg','reception/4.jpg','reception/5.jpg','reception/6.jpg','reception/7.jpg','reception/8.jpg']
+  haldi:     ['haldi/1.jpg','haldi/2.jpg','haldi/3.jpg','haldi/4.jpg','haldi/5.jpg'],
+  sangeet:   ['sangeet/1.jpg','sangeet/2.jpg','sangeet/3.jpg','sangeet/4.jpg','sangeet/5.jpg'],
+  baraat:    ['baraat/1.jpg','baraat/2.jpg','baraat/3.jpg','baraat/4.jpg','baraat/5.jpg'],
+  reception: ['reception/1.jpg','reception/2.jpg','reception/3.jpg','reception/4.jpg','reception/5.jpg']
 };
 CAT_IMGS.all = [...CAT_IMGS.haldi, ...CAT_IMGS.sangeet, ...CAT_IMGS.baraat, ...CAT_IMGS.reception];
+
+const CAT_VIDS = {
+  sangeet:   [{ src:'videos/v1.mp4', dur:'0:24', guest:'Rohit M.',  poster:'images/sangeet/4.jpg' }, { src:'videos/v2.mp4', dur:'0:31', guest:'Anjali K.', poster:'images/sangeet/5.jpg' }],
+  baraat:    [{ src:'videos/v3.mp4', dur:'0:18', guest:'Arjun T.',  poster:'images/baraat/4.jpg'  }],
+  reception: [{ src:'videos/v4.mp4', dur:'0:27', guest:'Deepika N.',poster:'images/reception/4.jpg'}],
+};
+CAT_VIDS.all = [...CAT_VIDS.sangeet, ...CAT_VIDS.baraat, ...CAT_VIDS.reception];
+CAT_VIDS.haldi = [];
+
 const CAT_LABELS = {
   all: ['Haldi','Sangeet','Baraat','Reception'],
   haldi: ['Haldi'], sangeet: ['Sangeet'], baraat: ['Baraat'], reception: ['Reception']
 };
 
 let currentCat = 'all';
+let currentSource = 'all';
 
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -782,29 +1765,122 @@ function shuffle(arr) {
 
 function buildGallery(cat) {
   cat = cat || currentCat;
-  const imgs = shuffle(CAT_IMGS[cat]);
   const labels = CAT_LABELS[cat];
-  const g = document.getElementById('masonry');
-  g.innerHTML = '';
+  const masonry = document.getElementById('masonry');
+  const proGrid = document.getElementById('proGrid');
+
+  if (currentSource === 'photographer') {
+    masonry.style.display = 'none';
+    proGrid.style.display = 'grid';
+    proGrid.innerHTML = '';
+    const proImgs = shuffle(
+      cat === 'all' ? [...PRO_IMGS] : (CAT_IMGS[cat] || []).filter(img => PRO_IMGS.has(img))
+    );
+    proImgs.forEach((img, i) => {
+      const imgSrc = 'images/' + img;
+      const label = labels[i % labels.length];
+      const el = document.createElement('div');
+      el.className = 'pro-gi';
+      el.onclick = () => openPhotoModal(imgSrc, 'Edited by photographer', label);
+      el.innerHTML = `
+        ${wpic(imgSrc, 'Photographer edit · ' + label, 'onerror="this.style.opacity=\'0\'"')}
+        <div class="react-row">
+          <button class="react-btn" onclick="reactPhoto(event,this,'❤️')">❤️</button>
+          <button class="react-btn" onclick="reactPhoto(event,this,'🔥')">🔥</button>
+          <button class="react-btn" onclick="reactPhoto(event,this,'😭')">😭</button>
+        </div>
+        <div class="gov"><div>
+          <div class="govn">Edited by photographer</div>
+          <div class="govs">${label}</div>
+        </div></div>`;
+      proGrid.appendChild(el);
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => proGrid.querySelectorAll('.pro-gi').forEach((el, i) => {
+      setTimeout(() => el.classList.add('gi-in'), i * 30);
+    })));
+    return;
+  }
+
+  proGrid.style.display = 'none';
+  masonry.style.display = '';
+  masonry.innerHTML = '';
+  const allImgs = CAT_IMGS[cat] || CAT_IMGS.all;
+  const imgs = shuffle(currentSource === 'guest' ? allImgs.filter(img => !PRO_IMGS.has(img)) : allImgs);
+  const vids = shuffle(CAT_VIDS[cat] || []);
+  const items = [];
+  let vi = 0;
   imgs.forEach((img, i) => {
-    const el = document.createElement('div');
-    el.className = 'gi';
-    el.style.animationDelay = `${(i % 8) * .05}s`;
-    el.innerHTML = `
-      <img src="images/${img}" alt="" loading="lazy">
-      <div class="gov"><div>
-        <div class="govn">${GNAMES[i % GNAMES.length]}</div>
-        <div class="govs">${labels[i % labels.length]} · just now</div>
-      </div></div>`;
-    g.appendChild(el);
+    items.push({ type: 'photo', src: img });
+    if (vi < vids.length && (i + 1) % 5 === 0) items.push({ type: 'video', data: vids[vi++] });
   });
+  while (vi < vids.length) items.push({ type: 'video', data: vids[vi++] });
+
+  items.forEach((item, i) => {
+    const el = document.createElement('div');
+    if (item.type === 'photo') {
+      const imgSrc = 'images/' + item.src;
+      const name = GNAMES[i % GNAMES.length];
+      const label = labels[i % labels.length];
+      el.className = 'gi';
+      el.onclick = () => openPhotoModal(imgSrc, name, label);
+      el.innerHTML = `
+        ${wpic(imgSrc, label + ' photo by ' + name)}
+        <div class="react-row">
+          <button class="react-btn" onclick="reactPhoto(event,this,'❤️')">❤️</button>
+          <button class="react-btn" onclick="reactPhoto(event,this,'🔥')">🔥</button>
+          <button class="react-btn" onclick="reactPhoto(event,this,'😭')">😭</button>
+        </div>
+        <div class="gov"><div>
+          <div class="govn">${name}</div>
+          <div class="govs">${label} · just now</div>
+        </div></div>
+        <button class="mod-btn" onclick="hidePhoto(event,this.closest('.gi'))" title="Hide photo"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    } else {
+      const v = item.data;
+      el.className = 'gi gi-vid';
+      el.onclick = () => openVidInLb(v.src, v.guest);
+      el.innerHTML = `
+        <video src="${v.src}" poster="${v.poster}" muted preload="none" playsinline onmouseenter="this.currentTime=0.1"></video>
+        <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="vid-dur">${v.dur}</div>
+        <div class="react-row">
+          <button class="react-btn" onclick="reactPhoto(event,this,'❤️')">❤️</button>
+          <button class="react-btn" onclick="reactPhoto(event,this,'🔥')">🔥</button>
+          <button class="react-btn" onclick="reactPhoto(event,this,'😭')">😭</button>
+        </div>
+        <div class="gov"><div>
+          <div class="govn">${v.guest}</div>
+          <div class="govs">Video · just now</div>
+        </div></div>`;
+    }
+    masonry.appendChild(el);
+  });
+  requestAnimationFrame(() => requestAnimationFrame(() => masonry.querySelectorAll('.gi').forEach((el, i) => {
+    setTimeout(() => el.classList.add('gi-in'), i * 30);
+  })));
+}
+
+function filtSrc(btn) {
+  document.querySelectorAll('.gsrc').forEach(b => { b.classList.remove('on'); b.setAttribute('aria-selected','false'); });
+  btn.classList.add('on'); btn.setAttribute('aria-selected','true');
+  currentSource = btn.dataset.src;
+  const gm = document.getElementById('gm');
+  if (currentSource === 'photographer') {
+    buildGallery(currentCat);
+    gm.textContent = '48 photographer edits · curated and delivered';
+  } else if (currentSource === 'guest') {
+    buildGallery(currentCat);
+    gm.textContent = `${pt} photos from guests · 4 videos · 47 uploading`;
+  } else {
+    buildGallery(currentCat);
+    gm.textContent = `${pt + 47} photos total · guest shots + photographer edits`;
+  }
 }
 
 function filt(btn) {
-  document.querySelectorAll('.gf').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  currentCat = btn.textContent.trim().toLowerCase();
-  if (!CAT_IMGS[currentCat]) currentCat = 'all';
+  document.querySelectorAll('.gf').forEach(b => { b.classList.remove('on'); b.setAttribute('aria-selected','false'); });
+  btn.classList.add('on'); btn.setAttribute('aria-selected','true');
+  currentCat = btn.dataset.cat || 'all';
   buildGallery(currentCat);
 }
 
@@ -814,14 +1890,16 @@ let pt = 312;
 
 function fireToast() {
   if (!document.getElementById('s4').classList.contains('on')) return;
+  if (currentSource === 'photographer') return;
+  if (document.querySelector('.amodal.on')) return;
   const name = TNS[Math.floor(Math.random() * TNS.length)];
   const c = Math.floor(Math.random() * 4) + 1;
-  document.getElementById('ttxt').textContent = `${name} uploaded ${c} new photo${c > 1 ? 's' : ''}`;
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+  const notif = document.getElementById('gnot');
+  document.getElementById('gnotTxt').textContent = `${name} added ${c} new photo${c > 1 ? 's' : ''}`;
+  notif.classList.add('show');
+  setTimeout(() => notif.classList.remove('show'), 3000);
   pt += c;
-  document.getElementById('gm').textContent = `${pt} photos · 28 videos · ${40 + Math.floor(Math.random() * 15)} guests uploading`;
+  document.getElementById('gm').textContent = `${pt} photos from guests · 4 videos · ${40 + Math.floor(Math.random() * 15)} uploading`;
   if (Math.random() > .45) {
     setTimeout(() => {
       const g = document.getElementById('masonry');
@@ -830,18 +1908,456 @@ function fireToast() {
       const labels = CAT_LABELS[currentCat] || CAT_LABELS.all;
       const el = document.createElement('div');
       el.className = 'gi';
+      el.onclick = () => openPhotoModal(src, name, labels[0]);
       el.innerHTML = `
-        <img src="${src}" alt="">
+        ${wpic(src, labels[0] + ' · just uploaded')}
+        <div class="react-row">
+          <button class="react-btn" onclick="reactPhoto(event,this,'❤️')">❤️</button>
+          <button class="react-btn" onclick="reactPhoto(event,this,'🔥')">🔥</button>
+          <button class="react-btn" onclick="reactPhoto(event,this,'😭')">😭</button>
+        </div>
         <div class="gov"><div>
           <div class="govn">${name}</div>
-          <div class="govs">${labels[0]} · Just now</div>
-        </div></div>`;
+          <div class="govs">${labels[0]} · just now</div>
+        </div></div>
+        <button class="mod-btn" onclick="hidePhoto(event,this.closest('.gi'))" title="Hide photo"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
       g.insertBefore(el, g.firstChild);
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('gi-in')));
     }, 700);
   }
 }
 
-setInterval(fireToast, 4500);
+let toastInterval = null;
+
+
+// ── FACE RECOGNITION ──
+let faceModalTrigger = null;
+function openFaceModal() {
+  faceModalTrigger = document.activeElement;
+  const modal = document.getElementById('faceModal');
+  modal.classList.add('on');
+  setTimeout(() => { modal.querySelector('.amodal-close').focus(); trapFocus(modal); }, 50);
+  document.getElementById('faceTitle').textContent = 'Scanning for your face';
+  document.getElementById('faceDesc').textContent = 'Searching 360 photos for your face';
+  document.getElementById('faceResult').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('faceTitle').textContent = 'Matching faces';
+    document.getElementById('faceDesc').textContent = 'Almost done...';
+  }, 1800);
+  setTimeout(() => {
+    document.getElementById('faceTitle').textContent = '23 photos found';
+    document.getElementById('faceDesc').textContent = '';
+    document.getElementById('faceResult').style.display = 'block';
+  }, 3200);
+}
+function closeFaceModal() {
+  const modal = document.getElementById('faceModal');
+  untrapFocus(modal);
+  modal.classList.remove('on');
+  if (faceModalTrigger) { faceModalTrigger.focus(); faceModalTrigger = null; }
+}
+
+// ── AI REEL ──
+let reelModalTrigger = null;
+function openReelModal() {
+  reelModalTrigger = document.activeElement;
+  const modal = document.getElementById('reelModal');
+  modal.classList.add('on');
+  setTimeout(() => { modal.querySelector('.amodal-close').focus(); trapFocus(modal); }, 50);
+  document.getElementById('reelStatus').textContent = 'Analysing 312 photos from guests';
+  document.getElementById('reelTitle').textContent = 'AI Highlight Reel';
+  document.getElementById('reelDesc').style.display = 'block';
+  document.getElementById('reelWrap').style.display = 'none';
+  setTimeout(() => { document.getElementById('reelStatus').textContent = 'Selecting the best moments'; }, 1500);
+  setTimeout(() => { document.getElementById('reelStatus').textContent = 'Adding music'; }, 3000);
+  setTimeout(() => {
+    const n1 = document.getElementById('n1').value || 'Rahul';
+    const n2 = document.getElementById('n2').value || 'Priya';
+    document.getElementById('reelStatus').textContent = 'Your reel is ready';
+    document.getElementById('reelWrap').style.display = 'block';
+    document.getElementById('reelDesc').style.display = 'none';
+    document.getElementById('reelTitle').textContent = `${n1} & ${n2} · Wedding Reel`;
+  }, 4500);
+}
+function closeReelModal() {
+  const modal = document.getElementById('reelModal');
+  untrapFocus(modal);
+  modal.classList.remove('on');
+  if (reelModalTrigger) { reelModalTrigger.focus(); reelModalTrigger = null; }
+}
+function reelPlayTap(btn) {
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+  const status = document.getElementById('reelStatus');
+  status.textContent = 'Full reel plays on your real wedding gallery';
+  setTimeout(() => { btn.innerHTML = orig; status.textContent = 'Your reel is ready'; }, 2500);
+}
+
+function demoDownload(btn) {
+  if (btn.classList.contains('gg-dl')) {
+    btn.style.background = 'var(--gold)';
+    btn.style.borderColor = 'var(--gold)';
+    setTimeout(() => { btn.style.background = ''; btn.style.borderColor = ''; }, 1800);
+    return;
+  }
+  const orig = btn.textContent;
+  btn.textContent = 'Preparing...';
+  setTimeout(() => { btn.textContent = 'Ready to download'; btn.style.borderColor = 'var(--gold)'; btn.style.color = 'var(--gold)'; }, 1200);
+  setTimeout(() => { btn.textContent = orig; btn.style.borderColor = ''; btn.style.color = ''; }, 3500);
+}
+function demoShare(btn) {
+  const orig = btn.textContent;
+  btn.textContent = 'Link copied';
+  setTimeout(() => { btn.textContent = orig; }, 2000);
+}
+
+// ── PHOTOGRAPHER VIEW ──
+let phUploadCount = 48;
+
+function handlePhInput(input) {
+  if (!input.files.length) return;
+  phUploadCount += input.files.length;
+  document.getElementById('phCount').textContent = `${phUploadCount} shots uploaded`;
+  const grid = document.querySelector('.ph-grid');
+  const addBtn = grid.querySelector('.ph-thumb-new');
+  Array.from(input.files).slice(0, 6).forEach(file => {
+    const url = URL.createObjectURL(file);
+    const el = document.createElement('div');
+    el.className = 'ph-thumb';
+    el.innerHTML = `<img src="${url}" alt="">`;
+    grid.insertBefore(el, addBtn);
+  });
+}
+
+function phCopyLink() {
+  const btn = document.getElementById('phCopyBtn');
+  btn.textContent = 'Link copied';
+  btn.style.borderColor = 'var(--gold)';
+  btn.style.color = 'var(--gold)';
+  setTimeout(() => {
+    btn.textContent = 'Copy couple\'s album link';
+    btn.style.borderColor = '';
+    btn.style.color = '';
+  }, 2200);
+}
+
+// ── REACTIONS ──
+
+let lbItems = [];
+let lbIndex = 0;
+
+function buildLbItems() {
+  lbItems = [];
+  if (currentSource === 'photographer') {
+    document.querySelectorAll('#proGrid .pro-gi').forEach(el => {
+      const img = el.querySelector('img');
+      const name = el.querySelector('.govn')?.textContent || '';
+      const sub = el.querySelector('.govs')?.textContent || '';
+      if (img) lbItems.push({ type: 'photo', src: img.src, name, sub });
+    });
+    return;
+  }
+  document.querySelectorAll('#masonry .gi').forEach(el => {
+    const name = el.querySelector('.govn')?.textContent || '';
+    const sub = el.querySelector('.govs')?.textContent || '';
+    if (el.classList.contains('gi-vid')) {
+      const vid = el.querySelector('video');
+      if (vid) lbItems.push({ type: 'video', src: vid.src, name, sub });
+    } else {
+      const img = el.querySelector('img');
+      if (img) lbItems.push({ type: 'photo', src: img.src, name, sub });
+    }
+  });
+}
+
+let photoModalTrigger = null;
+function openPhotoModal(src, name, label) {
+  photoModalTrigger = document.activeElement;
+  buildLbItems();
+  lbIndex = lbItems.findIndex(it => it.src === src);
+  if (lbIndex < 0) lbIndex = 0;
+  lbShow();
+  const modal = document.getElementById('photoModal');
+  modal.classList.add('on');
+  setTimeout(() => { modal.querySelector('.lb-close').focus(); trapFocus(modal); }, 50);
+}
+
+function openVidInLb(src, name) {
+  photoModalTrigger = document.activeElement;
+  buildLbItems();
+  lbIndex = lbItems.findIndex(it => it.src.endsWith(src) || it.src === src);
+  if (lbIndex < 0) lbIndex = 0;
+  lbShow();
+  const modal = document.getElementById('photoModal');
+  modal.classList.add('on');
+  setTimeout(() => { modal.querySelector('.lb-close').focus(); trapFocus(modal); }, 50);
+}
+
+function lbShow() {
+  const item = lbItems[lbIndex];
+  if (!item) return;
+  const img = document.getElementById('photoLightboxImg');
+  const vid = document.getElementById('lbVideo');
+  const info = document.getElementById('lbInfo');
+  if (item.type === 'video') {
+    img.style.display = 'none';
+    vid.style.display = 'block';
+    vid.src = item.src;
+    vid.play();
+    info.style.display = 'none';
+  } else {
+    vid.pause();
+    vid.src = '';
+    vid.style.display = 'none';
+    img.style.display = 'block';
+    img.src = item.src;
+    img.alt = item.sub ? `${item.sub} · ${item.name}` : item.name;
+    info.style.display = '';
+  }
+  document.getElementById('lbName').textContent = item.name;
+  document.getElementById('lbSub').textContent = item.sub;
+  document.getElementById('lbCounter').textContent = `${lbIndex + 1} / ${lbItems.length}`;
+}
+
+function lbNav(dir) {
+  lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
+  lbShow();
+}
+
+function closePhotoModal() {
+  const vid = document.getElementById('lbVideo');
+  vid.pause();
+  vid.src = '';
+  const modal = document.getElementById('photoModal');
+  untrapFocus(modal);
+  modal.classList.remove('on');
+  if (photoModalTrigger) { photoModalTrigger.focus(); photoModalTrigger = null; }
+}
+
+// ── LIGHTBOX SWIPE ──
+(function() {
+  let tx = 0;
+  const modal = document.getElementById('photoModal');
+  modal.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  modal.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) lbNav(dx < 0 ? 1 : -1);
+  }, { passive: true });
+})();
+
+const TAB_GROUP_SELECTORS = ['.gfilts-source', '.gfilts:not(.gfilts-source)', '.ap-src-tabs', '.gg-src-tabs', '.gg-filters', '.pcer-chips'];
+document.addEventListener('keydown', e => {
+  if ((e.key === ' ' || e.key === 'Enter') && e.target.classList.contains('chip')) {
+    e.preventDefault();
+    e.target.click();
+  }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    const group = TAB_GROUP_SELECTORS.map(s => e.target.closest(s)).find(Boolean);
+    if (group) {
+      e.preventDefault();
+      const btns = [...group.querySelectorAll('button')];
+      const idx = btns.indexOf(e.target);
+      if (idx === -1) return;
+      const next = e.key === 'ArrowRight' ? (idx + 1) % btns.length : (idx - 1 + btns.length) % btns.length;
+      btns[next].focus();
+      btns[next].click();
+    }
+  }
+  if (e.key === 'Escape') { closePhotoModal(); closeFaceModal(); closeReelModal(); }
+  if (document.getElementById('photoModal').classList.contains('on')) {
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft') lbNav(-1);
+  }
+});
+
+function reactPhoto(e, btn, emoji) {
+  e.stopPropagation();
+  btn.textContent = emoji + ' 1';
+  btn.style.color = 'var(--gold)';
+  btn.style.borderColor = 'var(--gold)';
+}
+
+// ── ALBUM PREVIEW (S2) ──
+let currentApSrc = 'all';
+
+// ── GUEST GALLERY (S3) — declared here so goTo() can reference them safely ──
+let currentGuestSrc = 'all';
+let currentGuestCat = 'all';
+
+const initHash = location.hash.replace('#','');
+if (DEMO_SCREENS.has(initHash)) {
+  activateDemoNav();
+  goTo(initHash);
+} else {
+  goTo('s1');
+}
+
+window.addEventListener('hashchange', () => {
+  const id = location.hash.replace('#', '');
+  const target = document.getElementById(id);
+  if (target && target.classList.contains('on')) return;
+  if (DEMO_SCREENS.has(id)) {
+    activateDemoNav();
+    goTo(id);
+  } else {
+    goTo('s1');
+  }
+});
+
+function apSrc(btn) {
+  document.querySelectorAll('.ap-src').forEach(b => { b.classList.remove('on'); b.setAttribute('aria-selected','false'); });
+  btn.classList.add('on'); btn.setAttribute('aria-selected','true');
+  currentApSrc = btn.dataset.apsrc;
+  const grid = document.getElementById('apGrid');
+  if (grid) { grid.innerHTML = ''; buildAlbumPreview(); }
+}
+
+function buildAlbumPreview() {
+  const grid = document.getElementById('apGrid');
+  if (!grid) return;
+  grid.style.opacity = '0';
+  const cats = ['haldi','sangeet','baraat','reception'];
+  const items = [];
+  cats.forEach(cat => {
+    (CAT_IMGS[cat] || []).forEach(img => {
+      const isPro = PRO_IMGS.has(img);
+      if (currentApSrc === 'pro' && !isPro) return;
+      if (currentApSrc === 'guest' && isPro) return;
+      items.push({ src: 'images/' + img, isPro, cat });
+    });
+  });
+  items.slice(0, 16).forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'ap-item';
+    el.innerHTML = `${wpic(p.src, p.isPro ? 'Photographer edit' : 'Guest photo')}
+      <div class="ap-item-ov"></div>
+      <span class="ap-badge ${p.isPro ? 'pro' : 'guest'}">${p.isPro ? 'Your edit' : 'Guest'}</span>`;
+    grid.appendChild(el);
+  });
+  setTimeout(() => { grid.style.opacity = '1'; }, 60);
+  triggerReveal(grid.closest('.ap-section'));
+}
+
+// ── GUEST GALLERY (S3) ──
+function buildGuestGallery(cat) {
+  const grid = document.getElementById('ggGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const cats_to_show = (!cat || cat === 'all') ? ['haldi','sangeet','baraat','reception'] : [cat];
+  const guestNames = ['Aanya','Rohan','Preethi','Kabir','Sneha','Dev','Isha','Arjun','Meera','Karan','Nisha','Vikram'];
+  const items = [];
+  cats_to_show.forEach(c => {
+    (CAT_IMGS[c] || []).forEach(img => {
+      const isPro = PRO_IMGS.has(img);
+      if (currentGuestSrc === 'photographer' && !isPro) return;
+      if (currentGuestSrc === 'guest' && isPro) return;
+      items.push({ src: 'images/' + img, isPro });
+    });
+  });
+  items.sort((a, b) => (b.isPro ? 1 : 0) - (a.isPro ? 1 : 0) || a.src.localeCompare(b.src));
+  items.slice(0, 12).forEach((p, i) => {
+    const name = guestNames[i % guestNames.length];
+    const el = document.createElement('div');
+    el.className = 'gg-item';
+    el.innerHTML = `${wpic(p.src, p.isPro ? 'Photographer edit' : 'Photo by ' + name)}
+      <div class="gg-ov">
+        <div class="gg-reactions">
+          <button class="gg-rbtn" onclick="event.stopPropagation();this.classList.toggle('on')">❤️</button>
+          <button class="gg-rbtn" onclick="event.stopPropagation();this.classList.toggle('on')">🔥</button>
+          <button class="gg-rbtn" onclick="event.stopPropagation();this.classList.toggle('on')">😭</button>
+        </div>
+        <div class="gg-who">${p.isPro ? 'Photographer' : 'by ' + name}</div>
+      </div>
+      <button class="gg-dl" title="Save this photo" onclick="event.stopPropagation();demoDownload(this)">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </button>`;
+    grid.appendChild(el);
+  });
+  requestAnimationFrame(() => requestAnimationFrame(() => grid.querySelectorAll('.gg-item').forEach((el, i) => {
+    setTimeout(() => el.classList.add('gi-in'), i * 30);
+  })));
+  triggerReveal(grid.closest('.gg-section'));
+}
+
+function ggSrc(btn) {
+  document.querySelectorAll('.gg-src').forEach(b => { b.classList.remove('on'); b.setAttribute('aria-selected','false'); });
+  btn.classList.add('on'); btn.setAttribute('aria-selected','true');
+  currentGuestSrc = btn.dataset.gsrc;
+  buildGuestGallery(currentGuestCat);
+}
+
+function ggFilt(btn, cat) {
+  document.querySelectorAll('.gg-filt').forEach(b => { b.classList.remove('on'); b.setAttribute('aria-selected','false'); });
+  btn.classList.add('on'); btn.setAttribute('aria-selected','true');
+  currentGuestCat = cat || 'all';
+  buildGuestGallery(currentGuestCat);
+}
+
+// ── PHOTO MODERATION (S4) ──
+function hidePhoto(e, el) {
+  e.stopPropagation();
+  el.style.transition = 'opacity .3s,transform .3s';
+  el.style.opacity = '0';
+  el.style.transform = 'scale(.85)';
+  setTimeout(() => el.remove(), 320);
+}
+
+// ── SCROLL REVEAL ──
+function triggerReveal(container) {
+  if (!container) return;
+  container.querySelectorAll('.reveal').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 60);
+  });
+}
+
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.08, root: document.getElementById('s1') });
+document.querySelectorAll('#s1 .reveal').forEach(el => revealObs.observe(el));
+
+// ── ANIMATED STAT COUNTERS ──
+function animateCount(el, target, suffix) {
+  const dur = 1400;
+  const start = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(ease * target) + (suffix || '');
+    if (p < 1) requestAnimationFrame(tick);
+  })(start);
+}
+const statObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const raw = el.dataset.count;
+    if (!raw) return;
+    const hasPlus = raw.includes('+');
+    animateCount(el, parseInt(raw), hasPlus ? '+' : '');
+    statObs.unobserve(el);
+  });
+}, { threshold: 0.5, root: document.getElementById('s1') });
+document.querySelectorAll('.stat-num').forEach(el => {
+  const txt = el.textContent.trim();
+  const num = parseInt(txt);
+  if (!num || num <= 1) return; // skip 0 and 1 — they don't animate meaningfully
+  el.dataset.count = txt;
+  el.textContent = '0' + (txt.includes('+') ? '+' : '');
+  statObs.observe(el);
+});
+
+// If page loaded directly on a demo screen, s1 was never visited.
+// Mark all s1 reveal/stat elements as already done so they don't sit
+// frozen at opacity:0 if/when the user navigates back to s1.
+if (DEMO_SCREENS.has(location.hash.replace('#', ''))) {
+  document.querySelectorAll('#s1 .reveal').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('.stat-num[data-count]').forEach(el => {
+    el.textContent = el.dataset.count;
+    statObs.unobserve(el);
+  });
+}
 </script>
 
 <!-- Crawlable content for search engines and AI. Not visible to users. -->
@@ -873,11 +2389,15 @@ setInterval(fireToast, 4500);
   <p>Yes. Wedding photographers use Yaadein to offer clients a guest photo collection as a premium add-on to their photography package. Photographers get access to all guest uploads alongside their own professional shots.</p>
 
   <h3>Is there an alternative to WhatsApp for sharing wedding photos?</h3>
-  <p>Yes. Yaadein is built specifically as an alternative to WhatsApp groups and Google Drive links for collecting wedding guest photos. It is faster, better organized, and requires no login from guests.</p>
+  <p>Yes. Yaadein is built specifically as an alternative to WhatsApp groups and Google Drive links for collecting wedding photos from guests. It is faster, better organized, and requires no login from guests.</p>
 
   <h3>How is Yaadein different from Google Photos shared albums?</h3>
   <p>Google Photos shared albums require guests to sign in with a Google account. Many guests give up at this step. Yaadein requires no account or login. Guests simply scan a QR code and upload. Photos are also automatically organized by wedding sub-event, unlike Google Photos which puts everything in one folder.</p>
 </div>
 
+<div class="sticky-cta" id="stickyCta">
+  <p>Every guest photo. One album.</p>
+  <button class="btn bg" style="white-space:nowrap;flex-shrink:0" data-sc="early" onclick="document.getElementById('stickyCta').style.display='none'">I want this</button>
+</div>
 </body>
 </html>
