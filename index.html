@@ -368,11 +368,13 @@ select.early-input:valid{color:var(--cream)}
 /* ── HERO BADGE ── */
 .hbadge{display:inline-flex;align-items:center;gap:8px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c2);background:rgba(212,168,67,.07);border:1px solid var(--bdr);padding:7px 16px;border-radius:100px;margin-bottom:22px}
 .hero-sub{font-size:.88rem;color:var(--gold);font-weight:400;margin-bottom:14px;opacity:.9;max-width:480px}
+.hero-pain{font-size:.95rem;line-height:1.8;color:var(--c2);max-width:520px;margin-bottom:16px;font-weight:300}
+.ftrs-desc{font-size:.9rem;line-height:1.8;color:var(--c2);max-width:560px;margin-bottom:52px;font-weight:300;margin-top:-24px}
 .hbadge-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:ld 1.5s ease infinite;flex-shrink:0}
 
 /* ── S1 SECTION ORDER ── */
 #s1{display:flex;flex-direction:column}
-.hero{order:1}.tired{order:2}.how{order:3}.for-whom{order:4}.ftrs{order:5}.lcta{order:6}.footer{order:7}
+.hero{order:1}.tired{order:2}.how{order:3}.ftrs{order:4}.for-whom{order:5}.lcta{order:6}.footer{order:7}
 
 /* ── FEATURES GRID ── */
 .ftrs{padding:96px 80px;background:var(--bg2)}
@@ -766,9 +768,10 @@ select.early-input:valid{color:var(--cream)}
     <div class="hbg"></div>
     <div class="hgrad"></div>
     <div class="hcontent">
-      <div class="hbadge"><span class="hbadge-dot"></span>For Indian Wedding Professionals · Early Access</div>
+      <div class="hbadge"><span class="hbadge-dot"></span>For Indian Weddings · Early Access</div>
       <h1>Every wedding has two albums.<br>Most couples only get <em>one.</em></h1>
-      <p class="hero-desc">Yaadein captures every guest photo and combines it with your edited shots into one private album. No app. No login. One QR code.</p>
+      <p class="hero-pain">At every Indian wedding, 200 guests have their phones out the entire day. The baraat from inside the crowd. The moment someone cries that the photographer cannot reach. Candid moments no professional can be in two places to capture. Almost none of those photos ever reach the couple.</p>
+      <p class="hero-desc">Yaadein fixes this. Every guest photo and your photographer's edited shots in one album. No app. No login. One QR code.</p>
       <div class="hbtns">
         <button class="btn bg" data-sc="early">I want this</button>
         <button class="btn bo" data-sc="how">See how it works</button>
@@ -789,8 +792,8 @@ select.early-input:valid{color:var(--cream)}
     <div class="steps">
       <div class="step reveal reveal-d1">
         <div class="snum">01</div>
-        <div class="stitle">Create your event</div>
-        <p class="sdesc">Enter the couple names and wedding date. Pick sub-events: Haldi, Sangeet, Mehendi, Baraat, Reception. A QR code and a private guest link are generated instantly. Print it, WhatsApp it, put it on the welcome table.</p>
+        <div class="stitle">Set up in under a minute</div>
+        <p class="sdesc">Enter the couple names, wedding date, and pick the ceremonies. A private QR code is generated instantly. Print it, put it on the welcome table, and every guest who scans it uploads directly into the couple's album. Nothing else to manage.</p>
         <button class="step-link" data-go="s2">Try it <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
       <div class="step reveal reveal-d2">
@@ -801,14 +804,14 @@ select.early-input:valid{color:var(--cream)}
       </div>
       <div class="step reveal reveal-d3">
         <div class="snum">03</div>
-        <div class="stitle">Photographer uploads edited shots</div>
-        <p class="sdesc">The photographer gets a private upload link. Their edited shots go directly into the same album as the photos from guests. Couple receives both, organized by ceremony, in one place.</p>
+        <div class="stitle">Photographer delivers like a professional</div>
+        <p class="sdesc">The photographer gets a private upload link built for this. Edited shots go directly into the couple's album the moment they are ready. Not a file link that expires. Not a folder the couple has to figure out. A clean, professional handoff that arrives the same way every time.</p>
         <button class="step-link" data-go="s2" data-subtab="photo">Photographer access <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
       <div class="step reveal reveal-d4">
         <div class="snum">04</div>
         <div class="stitle">The complete album, ready by morning</div>
-        <p class="sdesc">Every photo from every guest, plus the photographer's edited shots, organized by ceremony, in full quality. The couple gets one private link and downloads everything. Nothing is lost. Nothing is on a stranger's phone.</p>
+        <p class="sdesc">Every guest photo and the photographer's edited shots, organised by ceremony, in full quality. One private link. Only the couple can access it. No random people posting. No unrelated photos. No chaos. Just the complete wedding, exactly as it happened.</p>
         <button class="step-link" data-go="s4">See the gallery <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
     </div>
@@ -816,26 +819,27 @@ select.early-input:valid{color:var(--cream)}
 
   <section class="tired">
     <div class="sl">The problem no one is solving</div>
-    <p class="tired-desc">The average Indian wedding has 200 guests with phones. The couple receives photos from fewer than 10 of them.</p>
+    <p class="tired-desc">Think about the last wedding you attended. 200 people had their phones out the whole day. How many of those photos do you think actually reached the couple?</p>
     <div class="stat-row">
       <div class="stat-block reveal reveal-d1">
         <div class="stat-num">200+</div>
         <div class="stat-label">Guest phones at the average Indian wedding</div>
       </div>
       <div class="stat-block reveal reveal-d2">
-        <div class="stat-num">0</div>
-        <div class="stat-label">Of those photos that reach the couple today</div>
+        <div class="stat-num">~5</div>
+        <div class="stat-label">Photos the average couple actually receives from 200 guests</div>
       </div>
       <div class="stat-block reveal reveal-d3">
         <div class="stat-num">1</div>
-        <div class="stat-label">Album with everything in it, using Yaadein</div>
+        <div class="stat-label">Album where every photo finally lives together</div>
       </div>
     </div>
-    <p class="tired-cta-text">Be the professional who delivers <em>everything.</em></p>
+    <p class="tired-cta-text">The memories are there. On 200 phones.<br>Yaadein is the first tool built to <em>actually get them to you.</em></p>
   </section>
 
   <section class="ftrs">
     <div class="sl">Everything in one album</div>
+    <p class="ftrs-desc">Your wedding day is one day. The memories from it should last forever. Right now most of them don't make it past the week after.</p>
     <div class="fgrid">
 
       <div class="fcard">
@@ -847,19 +851,19 @@ select.early-input:valid{color:var(--cream)}
       <div class="fcard">
         <div class="fcard-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg></div>
         <div class="fcard-title">Everything in one place</div>
-        <p class="fcard-desc">One album for every photo from every guest. Collected before the night is over, organized by ceremony, accessible by the couple from one link.</p>
+        <p class="fcard-desc">Not a shared album anyone can post anything to. Not a folder with 500 unnamed files. Every photo from every guest and the photographer, in one private album only the couple controls.</p>
       </div>
 
       <div class="fcard">
         <div class="fcard-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
         <div class="fcard-title">Photographer upload link</div>
-        <p class="fcard-desc">The photographer gets a private upload link. Edited shots go straight into the album alongside photos from guests.</p>
+        <p class="fcard-desc">Not a file transfer. Not a link that expires in a week. A dedicated upload link that goes straight into the couple's album. The delivery that separates you from every other photographer they compared you to.</p>
       </div>
 
       <div class="fcard">
         <div class="fcard-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
         <div class="fcard-title">Organized by ceremony</div>
-        <p class="fcard-desc">Haldi, Sangeet, Baraat, Mehendi, Reception. Every photo sorted automatically.</p>
+        <p class="fcard-desc">Haldi, Sangeet, Baraat, Mehendi, Reception. Every photo in its place automatically. Not a single folder of 800 mixed photos. The couple opens the album and it already makes sense.</p>
       </div>
 
       <div class="fcard">
@@ -895,23 +899,26 @@ select.early-input:valid{color:var(--cream)}
 
       <div class="fwcard">
         <div class="fwey">For photographers</div>
-        <div class="fwt">Win every client who asks<br><em>"can we get guest photos too?"</em></div>
-        <p class="fwd">That question comes up in every sales call. Until now there was no real answer. Yaadein gives you one. Your edited shots and every guest photo, in one album. One upload link. No extra work.</p>
+        <div class="fwt">The only photographer who delivers<br><em>the complete wedding.</em></div>
+        <p class="fwd">The photographer who charged a third of what you did sent the same drive link you did. The couple opened both and saw the same thing. Your work inside was incomparable. The delivery looked identical.</p>
+        <p class="fwd">Yaadein changes that. Your edited shots go to the couple the moment you are done, through a private link built for this. Guest photos collect automatically at the venue. Everything lands in one organised album. The couple sees the difference before they even open a single photo.</p>
         <p class="fwd-accent">The couples who ask about guest photos. You can now say yes.</p>
         <button class="btn bg" data-sc="early">I want this</button>
       </div>
 
       <div class="fwcard">
         <div class="fwey">For planners</div>
-        <div class="fwt">Guest photos is the one request<br>you've never had an <em>answer for.</em></div>
-        <p class="fwd">Every couple asks. Most planners redirect or follow up for weeks chasing guests on WhatsApp. Now you hand them a QR code at the venue and the album builds itself. One less thing to chase.</p>
+        <div class="fwt">The planner who hands over<br><em>everything, not just a promise.</em></div>
+        <p class="fwd">Every planner tells the couple they will sort the photos. Most end up sending a WhatsApp message to guests that nobody responds to. The budget coordinator down the road does exactly the same thing. Nothing separates you.</p>
+        <p class="fwd">With Yaadein it is different. One QR at the venue collects every guest photo as the wedding happens. Photographer delivers straight into the same album. You hand the couple one link before you leave and the complete wedding is already in it. That is a different level of service and the couple will remember it.</p>
         <button class="btn bg" data-sc="early">I want this</button>
       </div>
 
       <div class="fwcard">
         <div class="fwey">For couples</div>
         <div class="fwt">Your guests captured moments<br>your photographer <em>never saw.</em></div>
-        <p class="fwd">The laugh from your aunt's angle. The tear your photographer missed. The baraat from inside the crowd. Those photos are sitting on 200 different phones right now. Yaadein gets them all to you, by morning.</p>
+        <p class="fwd">You planned this for months. You spent lakhs making it perfect. And after the wedding, someone told you to make a WhatsApp group for photos. That is the same thing every couple does. Most get a handful of blurry forwards and a lot of silence.</p>
+        <p class="fwd">The laugh from your aunt's angle. The tear your photographer missed. The baraat from inside the crowd. Those moments were captured. They exist on 200 different phones. Yaadein gets all of them to you, organised by ceremony, before the night is over.</p>
         <p class="fwd-accent">Most of those moments exist. They just never reached you.</p>
         <button class="btn bg" data-sc="early">I want this</button>
       </div>
@@ -922,7 +929,7 @@ select.early-input:valid{color:var(--cream)}
   <section class="lcta" id="early">
     <div class="lcta-left">
       <div class="sl">Early access</div>
-      <h2>The first to offer this<br>will own their <em>market.</em></h2>
+      <h2>Every photo from every guest.<br>One album. Nothing <em>lost.</em></h2>
       <p>We are onboarding personally. No automated emails, no sales calls. Just a real conversation about your next wedding.</p>
     </div>
     <div class="lcta-right">
