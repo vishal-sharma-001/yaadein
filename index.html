@@ -1432,6 +1432,8 @@ const TABS = document.querySelectorAll('[data-t]');
 let s1ReturnId = null;
 
 const DEMO_SCREENS = new Set(['s2','s3','s4']);
+const HASH_MAP = { s2: 'photographer', s3: 'guest', s4: 'couple' };
+const HASH_REVERSE = { photographer: 's2', guest: 's3', couple: 's4' };
 
 function activateDemoNav() {
   document.getElementById('navDefault').style.display = 'none';
@@ -1482,7 +1484,7 @@ function goTo(id) {
     if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 80);
     s1ReturnId = null;
   }
-  location.hash = id === 's1' ? '' : id;
+  location.hash = HASH_MAP[id] || '';
 }
 
 
@@ -2184,7 +2186,7 @@ let currentApSrc = 'all';
 let currentGuestSrc = 'all';
 let currentGuestCat = 'all';
 
-const initHash = location.hash.replace('#','');
+const initHash = HASH_REVERSE[location.hash.replace('#', '')] || location.hash.replace('#', '');
 if (DEMO_SCREENS.has(initHash)) {
   activateDemoNav();
   goTo(initHash);
@@ -2193,7 +2195,8 @@ if (DEMO_SCREENS.has(initHash)) {
 }
 
 window.addEventListener('hashchange', () => {
-  const id = location.hash.replace('#', '');
+  const slug = location.hash.replace('#', '');
+  const id = HASH_REVERSE[slug] || slug;
   const target = document.getElementById(id);
   if (target && target.classList.contains('on')) return;
   if (DEMO_SCREENS.has(id)) {
